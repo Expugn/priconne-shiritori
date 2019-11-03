@@ -22,7 +22,7 @@
   "ruby": {
     "futsuyomi": [ "ルビー", "ほうせき" ],
     "urayomi": [ "ガーネット", "ジユエリー" ],
-    "priconneyomi": [ "アキノのブローチ", "こうきせきウィスタリア" ]
+    "priconneyomi": [ "アキノのブローチ", "こうきせきウイスタリア" ]
   },
   "beer": {
     "futsuyomi": [ "ビールっぽいもの", "ジョッキ" ],
@@ -57,7 +57,7 @@
   "lens": {
     "futsuyomi": [ "むしめがね", "レンズ", "ルーペ" ],
     "urayomi": [ "ズーム" ],
-    "priconneyomi": [ "たんていのひっすアイテム", "ディテクティブルーペ" ]
+    "priconneyomi": [ "たんていのひっすアイテム", "デイテクテイブルーペ" ]
   },
   "meat": {
     "futsuyomi": [ "にく" ],
@@ -181,7 +181,7 @@
   },
   "fish": {
     "futsuyomi": [ "さかな", "おさかな" ],
-    "urayomi": [ "かつお", "まぐろ", "フィッシユ", "うお" ],
+    "urayomi": [ "かつお", "まぐろ", "フイッシユ", "うお" ],
     "priconneyomi": [  ]
   },
   "tree": {
@@ -190,7 +190,7 @@
     "priconneyomi": [ "ぼうきゃくのキャロル" ]
   },
   "candy": {
-    "futsuyomi": [ "あめ", "キャンディ" ],
+    "futsuyomi": [ "あめ", "キャンデイ" ],
     "urayomi": [ "ロリポップ" ],
     "priconneyomi": [ "クロエのおやつ" ]
   },
@@ -607,12 +607,12 @@
   "misaki": {
     "futsuyomi": [ "ミサキ" ],
     "urayomi": [  ],
-    "priconneyomi": [ "おとなのレディ" ]
+    "priconneyomi": [ "おとなのレデイ" ]
   },
   "mitsuki": {
     "futsuyomi": [ "ミツキ" ],
     "urayomi": [  ],
-    "priconneyomi": [ "マッドサイエンティスト", "ワンアイドデビル" ]
+    "priconneyomi": [ "マッドサイエンテイスト", "ワンアイドデビル" ]
   },
   "rima": {
     "futsuyomi": [ "リマ" ],
@@ -675,7 +675,7 @@
     "priconneyomi": [ "メタモルレグナント", "ぶんしんたい" ]
   },
   "christina": {
-    "futsuyomi": [ "クリスティーナ" ],
+    "futsuyomi": [ "クリステイーナ" ],
     "urayomi": [  ],
     "priconneyomi": [ "レジーナゲッシユ", "ふくだんちょう" ]
   },
