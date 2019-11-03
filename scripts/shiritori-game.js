@@ -436,12 +436,8 @@ function build_word_list()
             {
                 html += "<button id='" + word_id + "-" + futsuyomi_array[i] + "' onclick='toggle_phrase(\"" + word_id + "\", \"" + futsuyomi_array[i] + "\", \"futsuyomi\");'>";
                 html += "<div class='futsuyomi word-list-text' style='font-weight: bolder'>" + futsuyomi_array[i] + "</div>";
-                html += "</button>";
-
-                // DIVIDER
-                html += "<img class='divider' src='' alt=''>";
+                html += "</button><br>";
             }
-            html += "<br>";
         }
 
         // URAYOMI PHRASES
@@ -451,12 +447,8 @@ function build_word_list()
             {
                 html += "<button id='" + word_id + "-" + urayomi_array[i] + "' onclick='toggle_phrase(\"" + word_id + "\", \"" + urayomi_array[i] + "\", \"urayomi\")'>";
                 html += "<div class='urayomi word-list-text' style='font-weight: bolder'>" + urayomi_array[i] + "</div>";
-                html += "</button>";
-
-                // DIVIDER
-                html += "<img class='divider' src='' alt=''>";
+                html += "</button><br>";
             }
-            html += "<br>";
         }
 
         // PRICONNEYOMI PHRASES
@@ -466,10 +458,7 @@ function build_word_list()
             {
                 html += "<button id='" + word_id + "-" + priconneyomi_array[i] + "' onclick='toggle_phrase(\"" + word_id + "\", \"" + priconneyomi_array[i] + "\", \"priconneyomi\")'>";
                 html += "<div class='priconneyomi word-list-text' style='font-weight: bolder'>" + priconneyomi_array[i] + "</div>";
-                html += "</button>";
-
-                // DIVIDER
-                html += "<img class='divider' src='' alt=''>";
+                html += "</button><br>";
             }
             html += "<br>";
         }
