@@ -27,7 +27,7 @@
   "beer": {
     "futsuyomi": [ "ビールっぽいもの", "ジョッキ" ],
     "urayomi": [  ],
-    "priconneyomi": [ "むぎしゅわ", "エターナルジョッキ" ]
+    "priconneyomi": [ "むぎしゆわ", "エターナルジョッキ" ]
   },
   "bow": {
     "futsuyomi": [ "ゆみや" ],
@@ -51,7 +51,7 @@
   },
   "glasses": {
     "futsuyomi": [ "めがね" ],
-    "urayomi": [ "レンズ", "ピンぞこめがね", "ぐるぐるめがね" ],
+    "urayomi": [ "レンズ", "ビンぞこめがね", "ぐるぐるめがね" ],
     "priconneyomi": [ "カリンのめがね" ]
   },
   "lens": {
@@ -71,7 +71,7 @@
   },
   "bat": {
     "futsuyomi": [ "こうもり", "バット" ],
-    "urayomi": [ "きゅうけつき" ],
+    "urayomi": [ "きゆうけつき" ],
     "priconneyomi": [ "イリヤのけんぞく" ]
   },
   "bird": {
@@ -86,17 +86,17 @@
   },
   "cat": {
     "futsuyomi": [ "ねこ", "キャット" ],
-    "urayomi": [ "とらねこ", "にゃんこ" ],
+    "urayomi": [ "とらねこ", "にやんこ" ],
     "priconneyomi": [ "タマキのおともだち" ]
   },
   "goldfish": {
     "futsuyomi": [ "きんぎよ", "おさかな", "さかな" ],
-    "urayomi": [ "らんちゅう" ],
+    "urayomi": [ "らんちゆう" ],
     "priconneyomi": [  ]
   },
   "mouse": {
     "futsuyomi": [ "ねずみ", "マウス" ],
-    "urayomi": [ "ちゅーちゅー", "ラット" ],
+    "urayomi": [ "ちゆーちゆー", "ラット" ],
     "priconneyomi": [  ]
   },
   "egg": {
@@ -110,14 +110,14 @@
     "priconneyomi": [  ]
   },
   "milk": {
-    "futsuyomi": [ "ぎゅうにゅう", "ミルク" ],
+    "futsuyomi": [ "ぎゆうにゆう", "ミルク" ],
     "urayomi": [ "おちち" ],
     "priconneyomi": [ "エリザベス" ]
   },
   "chocolate": {
     "futsuyomi": [ "チョコレート", "おかし" ],
     "urayomi": [ "あまいもの", "カカオ" ],
-    "priconneyomi": [ "ドラちゃんのこうぶつ" ]
+    "priconneyomi": [ "ドラちやんのこうぶつ" ]
   },
   "acorn": {
     "futsuyomi": [ "どんぐり", "きのみ" ],
@@ -187,7 +187,7 @@
   "tree": {
     "futsuyomi": [ "ツリー", "クリスマス" ],
     "urayomi": [ "もみのき", "キャロル" ],
-    "priconneyomi": [ "ぼうきゃくのキャロル" ]
+    "priconneyomi": [ "ぼうきやくのキャロル" ]
   },
   "candy": {
     "futsuyomi": [ "あめ", "キャンデイ" ],
@@ -312,7 +312,7 @@
   "money": {
     "futsuyomi": [ "おかね", "かね" ],
     "urayomi": [ "マネー", "こぜに", "きんか" ],
-    "priconneyomi": [ "ルピ", "ギルドハウスかぐこうにゅう" ]
+    "priconneyomi": [ "ルビ", "ギルドハウスかぐこうにゆう" ]
   },
   "dessert": {
     "futsuyomi": [ "プリンアラモード", "デザート" ],
@@ -357,7 +357,7 @@
   "fishing_rod": {
     "futsuyomi": [ "つりざお" ],
     "urayomi": [ "ロッド" ],
-    "priconneyomi": [ "ルカのしゅみごと" ]
+    "priconneyomi": [ "ルカのしゆみごと" ]
   },
   "pot": {
     "futsuyomi": [ "なべ", "おなべ" ],
@@ -371,7 +371,7 @@
   },
   "brush": {
     "futsuyomi": [ "ふで" ],
-    "urayomi": [ "しよどう" , "もうひつ", "おしゅうじ", "すずり" ],
+    "urayomi": [ "しよどう" , "もうひつ", "おしゆうじ", "すずり" ],
     "priconneyomi": [ "とーごくぶんか" ]
   },
   "dumbbell": {
@@ -427,7 +427,7 @@
   "anna": {
     "futsuyomi": [ "アンナ" ],
     "urayomi": [  ],
-    "priconneyomi": [ "しっぷのヘカーテ", "ちゅうにびよう" ]
+    "priconneyomi": [ "しっぷのヘカーテ", "ちゆうにびよう" ]
   },
   "maho": {
     "futsuyomi": [ "マホ" ],
@@ -467,12 +467,12 @@
   "kaori": {
     "futsuyomi": [ "カオリ" ],
     "urayomi": [  ],
-    "priconneyomi": [ "りゅうきゅうからて", "はいたーい" ]
+    "priconneyomi": [ "りゆうきゆうからて", "はいたーい" ]
   },
   "io": {
     "futsuyomi": [ "イオ" ],
     "urayomi": [  ],
-    "priconneyomi": [ "しんまいきようし", "ちゃんイオ" ]
+    "priconneyomi": [ "しんまいきようし", "ちやんイオ" ]
   },
   "mimi": {
     "futsuyomi": [ "ミミ" ],
@@ -522,7 +522,7 @@
   "ninon": {
     "futsuyomi": [ "ニノン" ],
     "urayomi": [  ],
-    "priconneyomi": [ "トーゴクかぶれ", "えせにんじゃ" ]
+    "priconneyomi": [ "トーゴクかぶれ", "えせにんじや" ]
   },
   "shinobu": {
     "futsuyomi": [ "シノブ" ],
@@ -552,12 +552,12 @@
   "tomo": {
     "futsuyomi": [ "トモ" ],
     "urayomi": [  ],
-    "priconneyomi": [ "みくまりゅう" ]
+    "priconneyomi": [ "みくまりゆう" ]
   },
   "shiori": {
     "futsuyomi": [ "シオリ" ],
     "urayomi": [  ],
-    "priconneyomi": [ "ハツネちゃんのいもうと" ]
+    "priconneyomi": [ "ハツネちやんのいもうと" ]
   },
   "aoi": {
     "futsuyomi": [ "アオイ" ],
@@ -567,7 +567,7 @@
   "chika": {
     "futsuyomi": [ "チカ" ],
     "urayomi": [  ],
-    "priconneyomi": [ "しようかんじゅつし", "うたひめ" ]
+    "priconneyomi": [ "しようかんじゆつし", "うたひめ" ]
   },
   "makoto": {
     "futsuyomi": [ "マコト" ],
@@ -597,12 +597,12 @@
   "mifuyu": {
     "futsuyomi": [ "ミフユ" ],
     "urayomi": [  ],
-    "priconneyomi": [ "ししよう", "こうりつちゅう" ]
+    "priconneyomi": [ "ししよう", "こうりつちゆう" ]
   },
   "shizuru": {
     "futsuyomi": [ "シズル" ],
     "urayomi": [  ],
-    "priconneyomi": [ "おねえちゃんだよ" ]
+    "priconneyomi": [ "おねえちやんだよ" ]
   },
   "misaki": {
     "futsuyomi": [ "ミサキ" ],
@@ -622,7 +622,7 @@
   "monica": {
     "futsuyomi": [ "モニカ" ],
     "urayomi": [  ],
-    "priconneyomi": [ "おこちゃま" ]
+    "priconneyomi": [ "おこちやま" ]
   },
   "tsumugi": {
     "futsuyomi": [ "ツムギ" ],
