@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+
+    <link rel="icon" href="images/game/yuni.png">
+
+    <title>Princess Connect! Re:Dive - Shiritori Helper</title>
+    <meta name="title" content="Princess Connect! Re:Dive - Shiritori Helper"/>
+
+    <!-- META DATA -->
+    <meta name="description" content="Help for the Shiritori Minigame ('Great Battle! Shiritori Dragons') introduced in the 'Dragon Explorers' event in 'Princess Connect! Re:Dive' (プリンセスコネクト! Re:Dive).">
+    <meta name="author" content="S'pugn">
+    <meta name="keywords" content="Princess Connect Re:Dive, プリンセスコネクト! Re:Dive, Shiritori, S'pugn">
+
+    <!-- OPEN GRAPH / FACEBOOK META DATA -->
+    <meta property="og:title" content="Princess Connect! Re:Dive - Shiritori Helper"/>
+    <meta property="og:description" content="Help for the Shiritori Minigame ('Great Battle! Shiritori Dragons') introduced in the 'Dragon Explorers' event in 'Princess Connect! Re:Dive' (プリンセスコネクト! Re:Dive)."/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:image" content="https://raw.githubusercontent.com/Expugn/priconne-shiritori/master/images/game/yuni.png"/>
+    <meta property="og:image:width" content="50"/>
+    <meta property="og:image:height" content="50"/>
+    <meta property="og:url" content="https://expugn.github.io/priconne-shiritori/"/>
+    <meta property="og:locale" content="en_US"/>
+
+    <!-- TWITTER META DATA -->
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:site" content="@eSpugn"/>
+    <meta name="twitter:creator" content="@eSpugn"/>
+    <meta name="twitter:title" content="Princess Connect! Re:Dive - Shiritori Helper"/>
+    <meta name="twitter:description" content="Help for the Shiritori Minigame ('Great Battle! Shiritori Dragons') introduced in the 'Dragon Explorers' event in 'Princess Connect! Re:Dive' (プリンセスコネクト! Re:Dive)."/>
+
+    <!-- SCRIPTS -->
+    <script src="scripts/jquery-3.4.1.min.js"></script>
+    <script src="scripts/wanakana.min.js"></script>
+    <script src="scripts/console.js"></script>
+    <script src="scripts/read-word-list-json.js"></script>
+    <script src="scripts/shiritori-game.js"></script>
+    <script src="scripts/webpage.js"></script>
+
+    <!-- CSS STYLE SHEETS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="background">
+
+<!-- TITLE -->
+<div>
+    <h1 class="title webpage-text">Princess Connect! Re:Dive</h1>
+    <h2 class="title webpage-text">Shiritori Helper</h2>
+</div>
+
+<hr>
+
+<!-- GAME DIV -->
+<div id="game-div">
+    <!-- SETTINGS AREA -->
+    <div>
+        <br>
+        <button onclick="open_word_list()">Open Word List</button>
+        <br><br>
+        <button onclick="reset_game()">Reset Game</button>
+        <br><br>
+    </div>
+
+    <hr>
+
+    <!-- GAME STATUS AREA -->
+    <div>
+        <h3 id="turn-text" class="webpage-text centerText" hidden>Turn <span id="turn-counter">0</span></h3>
+        <h3 id="game-start-tip" class="webpage-text centerText">Select the card <span style="color:gold">Kaya</span> selected to begin.</h3>
+        <h3 id="your-turn-text" class="webpage-text centerText" hidden><span style="color:gold">Your turn.</span><br>Select the option you chose in game.</h3>
+        <h3 id="opponent-turn-text" class="webpage-text centerText" hidden><span style="color:gold">Kaya</span>'s turn.<br>Select the card that <span style="color:gold">Kaya</span> selected.</h3>
+        <h3 id="rush-mode-button-text" class="centerText" hidden>
+            <button id="rush-mode-button" class="rush-mode-button low-opacity" onclick="toggle_rush_mode()">
+                <img class="rush-mode-button" title="Toggle Rush Mode" src="images/webpage/rush.png" alt="">
+            </button>
+        </h3>
+        <h3 id="rush-mode-text" class="webpage-text centerText" hidden><span style="color:gold">Rush Mode</span> activated.<br>Select the cards that you collected during rush mode.<br><br><span style="color:red">All selections will be saved to your word list.</span></h3>
+    </div>
+
+    <hr>
+
+    <!-- SELECTION AREA -->
+    <div>
+        <h3 id="n-character-hit-text" class="webpage-text centerText" hidden>The <span style="color:gold">ん</span> character has been hit.<br>There are no more possible selections.<br><br>Click <span style="color:gold">Reset Game</span> to play again.</h3>
+        <table class="centerTable">
+            <tbody id="selection-table"></tbody>
+        </table>
+    </div>
+</div>
+
+<!-- WORD LIST DIV -->
+<div id="word-list-div" hidden>
+    <button onclick="close_word_list()">Close Word List</button>
+    <br><br>
+    <div class="futsuyomi webpage-text">フツウヨミ (<span id="futsuyomi-count">0</span>/<span id="futsuyomi-total-count">0</span>)</div>
+    <br>
+    <div class="urayomi webpage-text">ウラヨミ (<span id="urayomi-count">0</span>/<span id="urayomi-total-count">0</span>)</div>
+    <br>
+    <div class="priconneyomi webpage-text">プリコネヨミ (<span id="priconneyomi-count">0</span>/<span id="priconneyomi-total-count">0</span>)</div>
+    <br>
+    <button onclick="reset_data()">Reset Data</button>
+    <br><br>
+    <h3 class="webpage-text centerText">Progress can be added or removed by <span style="color: gold">clicking</span> on the phrase.</h3>
+    <br>
+    <div id="word-list"></div>
+</div>
+
+<!-- LOCALSTORAGE WARNING -->
+<div id="localstorage-warning-div" hidden>
+    <h3 class="title webpage-text">Your browser does not support the use of LocalStorage.<br>This webpage cannot be used.</h3>
+</div>
+
+<hr>
+
+</body>
+
+<footer>
+    <p class="footer webpage-text">Made With <span style="color:#ff4d4d">❤</span> By S'pugn <img class="footer" src="images/webpage/HAhaa.png" alt=""></p>
+</footer>
+
+<script>
+    // LOCAL STORAGE SUPPORT DOES NOT EXIST
+    if (typeof(Storage) === "undefined")
+    {
+        console.log(get_colored_message("System", "LocalStorage is not supported on this browser!", message_status.WARNING));
+        document.getElementById("game-div").hidden = true;
+        document.getElementById("localstorage-warning-div").hidden = false;
+    }
+    else
+    {
+        setup();
+    }
+
+    function setup()
+    {
+        if (!word_list_loaded)
+        {
+            setTimeout(function () {
+                setup();
+            }, 1000);
+        }
+        else
+        {
+            build_all_choices();
+            build_word_list();
+
+            // SAVED DATA EXISTS
+            if (localStorage.getItem(shiritori_game.localstorage_location) !== null)
+            {
+                console.log(get_colored_message(shiritori_game.sender_name, "Loading saved data...", message_status.INFO));
+
+                let saved_data = JSON.parse(localStorage.getItem(shiritori_game.localstorage_location));
+                for (let i = 0 ; i < saved_data.length ; i++)
+                {
+                    // 0 = WORD ; 1 = PHRASE ; 2 = PHRASE_TYPE
+                    let word_data = saved_data[i].split(';');
+                    add_word_to_collection(word_data[0], word_data[1], word_data[2]);
+                }
+                console.log(get_colored_message(shiritori_game.sender_name, "User saved data loaded!", message_status.SUCCESS));
+                build_all_choices();
+            }
+        }
+    }
+</script>
+</html>
