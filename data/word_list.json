@@ -312,7 +312,7 @@
   "money": {
     "futsuyomi": [ "おかね", "かね" ],
     "urayomi": [ "マネー", "こぜに", "きんか" ],
-    "priconneyomi": [ "ルビ", "ギルドハウスかぐこうにゆう" ]
+    "priconneyomi": [ "ルピ", "ギルドハウスかぐこうにゆう" ]
   },
   "dessert": {
     "futsuyomi": [ "プリンアラモード", "デザート" ],

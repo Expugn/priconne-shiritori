@@ -89,37 +89,44 @@ function add_word_to_collection(word_id, phrase, phrase_type)
     {
         console.log(get_colored_message(shiritori_game.sender_name, "New word collected: " + highlight_code(word), message_status.SUCCESS));
 
-        if (!document.getElementById(word_id + "-" + phrase).classList.contains("low-opacity"))
+        try
         {
-            document.getElementById(word_id + "-" + phrase).classList.add("low-opacity");
+            if (!document.getElementById(word_id + "-" + phrase).classList.contains("low-opacity"))
+            {
+                document.getElementById(word_id + "-" + phrase).classList.add("low-opacity");
+            }
+            switch (phrase_type)
+            {
+                case word_list_keys.futsuyomi:
+                    shiritori_game.futsuyomi_collected_phrases++;
+                    document.getElementById("futsuyomi-count").innerHTML = shiritori_game.futsuyomi_collected_phrases;
+                    break;
+                case word_list_keys.urayomi:
+                    shiritori_game.urayomi_collected_phrases++;
+                    document.getElementById("urayomi-count").innerHTML = shiritori_game.urayomi_collected_phrases;
+                    break;
+                case word_list_keys.priconneyomi:
+                    shiritori_game.priconneyomi_collected_phrases++;
+                    document.getElementById("priconneyomi-count").innerHTML = shiritori_game.priconneyomi_collected_phrases;
+                    break;
+                default:
+                    // IGNORED
+                    break;
+            }
+
+            // ADD WORD TO COLLECTION
+            shiritori_game.collected_words.push(word);
+
+            // SAVE DATA
+            localStorage.setItem(shiritori_game.localstorage_location, JSON.stringify(shiritori_game.collected_words));
+
+            // CHECK IF COMPLETE OR NOT
+            check_if_word_complete(word_id);
         }
-        switch (phrase_type)
+        catch (e)
         {
-            case word_list_keys.futsuyomi:
-                shiritori_game.futsuyomi_collected_phrases++;
-                document.getElementById("futsuyomi-count").innerHTML = shiritori_game.futsuyomi_collected_phrases;
-                break;
-            case word_list_keys.urayomi:
-                shiritori_game.urayomi_collected_phrases++;
-                document.getElementById("urayomi-count").innerHTML = shiritori_game.urayomi_collected_phrases;
-                break;
-            case word_list_keys.priconneyomi:
-                shiritori_game.priconneyomi_collected_phrases++;
-                document.getElementById("priconneyomi-count").innerHTML = shiritori_game.priconneyomi_collected_phrases;
-                break;
-            default:
-                // IGNORED
-                break;
+            console.log(get_colored_message(shiritori_game.sender_name, "\tOops, maybe not... this word has problems! Removing it from existence instead.", message_status.WARNING));
         }
-
-        // ADD WORD TO COLLECTION
-        shiritori_game.collected_words.push(word);
-
-        // SAVE DATA
-        localStorage.setItem(shiritori_game.localstorage_location, JSON.stringify(shiritori_game.collected_words));
-
-        // CHECK IF COMPLETE OR NOT
-        check_if_word_complete(word_id);
     }
 }
 

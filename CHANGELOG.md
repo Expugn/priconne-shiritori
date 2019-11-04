@@ -12,6 +12,8 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
   - `Blue` Color: The Player has a chance of selecting a new phrase after Kaya's choice
   - `Red` Color: Kaya and the Player has a chance of both selecting new phrases
 - Added a Tips menu to explain what the different highlights/image styling means
+- Added error catching so a user's word list isn't completely screwed with every error in word_list.json
+  - Look at the console (F12) to see which word has issues and re-add it manually if needed
 ### Changed
 - Word list is now in an actual list rather than row-per-category
 - Adjusted Open Graph icon size
