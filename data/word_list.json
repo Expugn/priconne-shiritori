@@ -442,7 +442,7 @@
   "hatsune": {
     "futsuyomi": [ "ハツネ" ],
     "urayomi": [  ],
-    "priconneyomi": [ "スヤスヤ", "ちようのうりよくしようじよ", "しおりんのあね" ]
+    "priconneyomi": [ "ちようのうりよくしようじよ", "スヤスヤ", "しおりんのあね" ]
   },
   "nanaka": {
     "futsuyomi": [ "ナナカ" ],
@@ -647,12 +647,12 @@
   "pecorine": {
     "futsuyomi": [ "ペコリーヌ" ],
     "urayomi": [  ],
-    "priconneyomi": [ "くいしんぼう", "おうけのそうび", "やばいですね", "プリンセス" ]
+    "priconneyomi": [ "くいしんぼう", "おうけのそうび", "やバいですね", "プリンセス" ]
   },
   "kokkoro": {
     "futsuyomi": [ "コッコロ" ],
     "urayomi": [  ],
-    "priconneyomi": [ "みこ", "ガイドやく" ]
+    "priconneyomi": [ "ガイドやく", "みこ" ]
   },
   "kyaru": {
     "futsuyomi": [ "キャル" ],

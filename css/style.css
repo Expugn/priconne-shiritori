@@ -126,6 +126,35 @@ div.word-list-text {
 }
 /* CSS FOR WORD LIST END */
 
+/* CSS FOR LATEST SELECTION START */
+img.latest-selection-character-circle {
+    display: inline-block;
+    margin-left: 90px;
+    margin-top: -50px;
+    position: relative;
+    bottom: 22px;
+}
+
+div.latest-selection-character {
+    display: inline-block;
+    margin-top: -30px;
+    margin-left: 93px;
+    font-weight: bolder;
+    font-size: 35px;
+    position: relative;
+    bottom: 61px;
+    right: 2px;
+}
+#latest-selection-text {
+    position: relative;
+    bottom: 70px;
+}
+#latest-selection {
+    padding-top: 20px;
+    margin-bottom: -60px;
+}
+/* CSS FOR LATEST SELECTION END */
+
 button.rush-mode-button {
     max-width: 300px;
 }

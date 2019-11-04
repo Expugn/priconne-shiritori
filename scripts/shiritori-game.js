@@ -32,6 +32,7 @@ function shiritori(word_id, phrase, phrase_type)
         document.getElementById("turn-text").hidden = false;
         document.getElementById("game-start-tip").hidden = true;
         document.getElementById("your-turn-text").hidden = false;
+        document.getElementById("latest-selection").hidden = false;
     }
     else
     {
@@ -57,11 +58,26 @@ function shiritori(word_id, phrase, phrase_type)
             }
         }
     }
+    // UPDATE LATEST SELECTION
+    update_latest_selection(word_id, phrase, phrase_type);
+
     // ADD WORD TO COLLECTION
     add_word_to_collection(word_id, phrase, phrase_type);
 
     // BUILD NEW LIST OF POSSIBLE WORDS
     get_possible_words(phrase);
+}
+
+function update_latest_selection(word_id, phrase, phrase_type)
+{
+    document.getElementById("latest-selection-image").src = "images/game/" + word_id + ".png";
+    document.getElementById("latest-selection-character").innerHTML = get_last_character(phrase);
+    document.getElementById("latest-selection-text").innerHTML = phrase;
+
+    document.getElementById("latest-selection-character").classList.remove(word_list_keys.futsuyomi);
+    document.getElementById("latest-selection-character").classList.remove(word_list_keys.urayomi);
+    document.getElementById("latest-selection-character").classList.remove(word_list_keys.priconneyomi);
+    document.getElementById("latest-selection-character").classList.add(phrase_type);
 }
 
 function add_word_to_collection(word_id, phrase, phrase_type)
@@ -282,6 +298,7 @@ function reset_game()
     document.getElementById("rush-mode-button-text").hidden = true;
     document.getElementById("rush-mode-text").hidden = true;
     document.getElementById("n-character-hit-text").hidden = true;
+    document.getElementById("latest-selection").hidden = true;
 
     build_all_choices();
 }
@@ -360,7 +377,11 @@ function build_all_choices()
         {
             // (word_id, {phrase : phrase_type})
             // phrase_type = futsuyomi | urayomi | priconneyomi ; determine color of character
-            add_word_to_table_html(word_id, words[i]);
+            // BLACKLIST ANY PRICONNEYOMI WORDS SINCE THEY WILL NEVER BE SELECTED BY KAYA
+            if (words[i][Object.keys(words[i])[0]] !== word_list_keys.priconneyomi)
+            {
+                add_word_to_table_html(word_id, words[i]);
+            }
         }
     }
     // CLOSE TABLE
