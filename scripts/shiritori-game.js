@@ -126,6 +126,7 @@ function add_word_to_collection(word_id, phrase, phrase_type)
         catch (e)
         {
             console.log(get_colored_message(shiritori_game.sender_name, "\tOops, maybe not... this word has problems! Removing it from existence instead.", message_status.WARNING));
+            alert("The following word has been removed from your saved data:\n" + word_id + " ; " + phrase + " ; " + phrase_type + "\n\nGo to Word List and re-enable the word if needed.");
         }
     }
 }
@@ -296,6 +297,10 @@ function get_possible_words(phrase)
             let last_character = get_last_character(phrase);
             let kaya_new_phrases = missing_phrase_map.get(last_character);
 
+            let kaya_phrases_string = "";
+            let user_phrases_string = "";
+            let kaya_and_user_phrases_string = "";
+
             npc_choices_map.get(last_character).forEach(function (kaya_phrase)
             {
                 // GET LAST CHARACTER OF KAYA'S OPTION AND SEE IF THE USER CAN GET SOMETHING OUT OF IT
@@ -304,11 +309,22 @@ function get_possible_words(phrase)
 
                 // CHECK STATUS
                 if (kaya_new_phrases.includes(kaya_phrase))
+                {
                     kaya_can_select_new_phrase = true;
+                    kaya_phrases_string += "  - " + kaya_phrase + "\n";
+                }
+
                 if (missing_phrases.length > 0)
+                {
                     user_can_select_new_phrase = true;
+                    user_phrases_string += "  - " + kaya_phrase + " -> (" + missing_phrases.length + " New Choices)\n";
+                }
                 if ((kaya_new_phrases.includes(kaya_phrase) && missing_phrases.length > 0))
+                {
                     kaya_and_user_can_select_new_phrases = true;
+                    kaya_and_user_phrases_string += "  - " + kaya_phrase + " -> (" + missing_phrases.length + " New Choices)\n";
+                }
+
             });
 
             // ASSIGN APPROPRIATE COLOR DEPENDING ON RESULT
@@ -326,15 +342,15 @@ function get_possible_words(phrase)
             }
 
             // ADDITIONAL TITLE TEXT
-            additional_title_text += (kaya_can_select_new_phrase ? "\n[*] Kaya has a chance of choosing a new phrase!" : "") +
-                (user_can_select_new_phrase ? "\n[*] Player has a chance of choosing a new phrase!" : "") +
-                (kaya_and_user_can_select_new_phrases ? "\n[*] Kaya and Player has a chance of choosing new phrases!" : "");
+            additional_title_text += (kaya_can_select_new_phrase ? "\nKaya has a chance of choosing a new phrase!\n" + kaya_phrases_string : "") +
+                (user_can_select_new_phrase ? "\nPlayer has a chance of choosing a new phrase!\n" + user_phrases_string : "") +
+                (kaya_and_user_can_select_new_phrases ? "\nKaya and Player has a chance of choosing new phrases!\n" + kaya_and_user_phrases_string : "");
         }
 
         // INSERT DATA
         table_html += "<th class='word-image'>";
         table_html += "<button id='" + word_id + "_" + phrase + "' class='pointer-cursor word-selection-button" + (is_word_already_collected ? " low-opacity" : "") + "' onclick='shiritori(\"" + word_id + "\", \"" + phrase + "\", \"" + phrase_type + "\")'>";
-        table_html += "<img class='notranslate " + color_highlight + phrase_highlight + "blackOutline word-image' title='" + phrase + additional_title_text + "' src='images/game/" + word_id + ".png' alt=''>";
+        table_html += "<img class='notranslate " + color_highlight + phrase_highlight + "blackOutline word-image' title='" + phrase + "\n" + additional_title_text + "' src='images/game/" + word_id + ".png' alt=''>";
         table_html += "<img class='notranslate " + phrase_highlight + "character-circle' src='images/webpage/" + "character_circle" + ".png' alt=''>";
         table_html += "<div class='notranslate end-character webpage-text " + phrase_type + "'>" + get_last_character(phrase) + "</div>";
         table_html += "</button></th>";

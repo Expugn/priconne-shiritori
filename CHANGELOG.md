@@ -14,6 +14,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Added a Tips menu to explain what the different highlights/image styling means
 - Added error catching so a user's word list isn't completely screwed with every error in word_list.json
   - Look at the console (F12) to see which word has issues and re-add it manually if needed
+  - Any modified words are now alerted via Alert popup
 ### Changed
 - Word list is now in an actual list rather than row-per-category
 - Adjusted Open Graph icon size
