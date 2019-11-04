@@ -187,6 +187,9 @@ function get_possible_words(phrase)
     let end_character = get_last_character(phrase);
     let table_html = "";
     let counter = 0;
+    let is_player_turn = !document.getElementById("your-turn-text").hidden;
+    let missing_phrase_map = get_missing_phrase_map();
+    let npc_choices_map = get_npc_choice_map();
 
     // FIRST CHARACTER OF A PHRASE THAT MATCHES IN HIRAGANA OR KATAKANA = POSSIBLE
     for (let [word_id, word_data] of word_list)
@@ -261,7 +264,8 @@ function get_possible_words(phrase)
         // IF IT IS KAYA'S TURN
         // CHANGE PRICONNEYOMI WORDS TO GRAYSCALE SINCE SHE'LL NEVER PICK THEM
         let phrase_highlight = "";
-        let is_player_turn = !document.getElementById("your-turn-text").hidden;
+        let color_highlight = "";
+        let additional_title_text = "";
         if (!is_player_turn)
         {
             // PHRASE IS NOT A PRICONNEYOMI
@@ -270,11 +274,64 @@ function get_possible_words(phrase)
                 phrase_highlight = "grayscale ";
             }
         }
+        else
+        {
+            // COLOR HIGHLIGHTING:
+            //
+            // NO COLOR: USER HAS NO CHANCE OF GETTING A PHRASE THEY NEED EVEN AFTER KAYA SELECTS SOMETHING
+            // COLOR 1 (GREEN): KAYA HAS A CHANCE OF SELECTING A PHRASE THE USER NEEDS
+            // COLOR 2 (BLUE): USER HAS A CHANCE OF SELECTING A PHRASE THEY NEED AFTER KAYA SELECTS
+            // COLOR 3 (RED): KAYA CAN SELECT A PHRASE THE USER IS MISSING AND THE USER CAN SELECT ONE TOO
+            let kaya_can_select_new_phrase = false;
+            let user_can_select_new_phrase = false;
+            let kaya_and_user_can_select_new_phrases = false;
+
+            let last_character = get_last_character(phrase);
+            let kaya_new_phrases = missing_phrase_map.get(last_character);
+            npc_choices_map.get(last_character).forEach(function (kaya_phrase)
+            {
+                // GET LAST CHARACTER OF KAYA'S OPTION AND SEE IF THE USER CAN GET SOMETHING OUT OF IT
+                let lc = get_last_character(kaya_phrase.split(';')[1]);
+                let missing_phrases = missing_phrase_map.get(lc);
+
+                // CHECK STATUS
+                if (kaya_new_phrases.includes(kaya_phrase))
+                {
+                    kaya_can_select_new_phrase = true;
+                }
+                if (missing_phrases.length > 0)
+                {
+                    user_can_select_new_phrase = true;
+                }
+                if (kaya_new_phrases.includes(kaya_phrase) && missing_phrases.length > 0)
+                {
+                    kaya_and_user_can_select_new_phrases = true;
+                }
+            });
+
+            // ASSIGN APPROPRIATE COLOR DEPENDING ON RESULT
+            if (kaya_and_user_can_select_new_phrases)
+            {
+                color_highlight = word_list_keys.priconneyomi + " ";
+                additional_title_text += "\n[*] Kaya and Player has a chance of choosing new phrases!";
+            }
+            else if (user_can_select_new_phrase)
+            {
+                color_highlight = word_list_keys.urayomi + " ";
+                additional_title_text += "\n[*] Player has a chance of choosing a new phrase!";
+            }
+            else if (kaya_and_user_can_select_new_phrases)
+            {
+                color_highlight = word_list_keys.futsuyomi + " ";
+                additional_title_text += "\n[*] Kaya has a chance of choosing a new phrase!";
+            }
+
+        }
 
         // INSERT DATA
         table_html += "<th class='word-image'>";
         table_html += "<button id='" + word_id + "_" + phrase + "' class='pointer-cursor word-selection-button" + (is_word_already_collected ? " low-opacity" : "") + "' onclick='shiritori(\"" + word_id + "\", \"" + phrase + "\", \"" + phrase_type + "\")'>";
-        table_html += "<img class='notranslate " + phrase_highlight + "word-image' title='" + phrase + "' src='images/game/" + word_id + ".png' alt=''>";
+        table_html += "<img class='notranslate " + color_highlight + phrase_highlight + "blackOutline word-image' title='" + phrase + additional_title_text + "' src='images/game/" + word_id + ".png' alt=''>";
         table_html += "<img class='notranslate " + phrase_highlight + "character-circle' src='images/webpage/" + "character_circle" + ".png' alt=''>";
         table_html += "<div class='notranslate end-character webpage-text " + phrase_type + "'>" + get_last_character(phrase) + "</div>";
         table_html += "</button></th>";
@@ -301,6 +358,9 @@ function reset_game()
     document.getElementById("latest-selection").hidden = true;
 
     build_all_choices();
+
+    console.log(get_colored_message(shiritori_game.sender_name, "Shiritori game has been reset.", message_status.INFO));
+
 }
 
 function print_word_list()

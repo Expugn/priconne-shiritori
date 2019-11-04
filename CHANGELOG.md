@@ -7,6 +7,10 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ### Added
 - `Priconneyomi` phrases are now gray-scaled if it is Kaya's turn
 - Latest selection will now be displayed at the top
+- Highlighting as suggested by `Crimson#3288` ; Used to help the Player choose a path to get new phrases
+  - `Green` Color: Kaya has a chance of selecting a new phrase
+  - `Blue` Color: The Player has a chance of selecting a new phrase after Kaya's choice
+  - `Red` Color: Kaya and the Player has a chance of both selecting new phrases
 ### Changed
 - Word list is now in an actual list rather than row-per-category
 - Adjusted Open Graph icon size
