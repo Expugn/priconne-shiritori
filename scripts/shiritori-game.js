@@ -1,11 +1,11 @@
 let shiritori_game = {
+    // CONSTANTS
     sender_name: "Shiritori",
     localstorage_location: "collection",
-    rush_mode: false,
-    collected_words: [],
-
     max_words_per_row: 10,
 
+    // COLLECTION
+    collected_words: [],
 
     futsuyomi_collected_phrases: 0,
     urayomi_collected_phrases: 0,
@@ -15,7 +15,9 @@ let shiritori_game = {
     urayomi_total_phrases: 0,
     priconneyomi_total_phrases: 0,
 
+    // GAME VARIABLES
     turn_count: 0,
+    rush_mode: false,
 };
 
 function shiritori(word_id, phrase, phrase_type)
@@ -240,11 +242,24 @@ function get_possible_words(phrase)
         let phrase_type = phrase_data[phrase];
         let is_word_already_collected = shiritori_game.collected_words.includes(word_id + ";" + phrase + ";" + phrase_type);
 
+        // IF IT IS KAYA'S TURN
+        // CHANGE PRICONNEYOMI WORDS TO GRAYSCALE SINCE SHE'LL NEVER PICK THEM
+        let phrase_highlight = "";
+        let is_player_turn = !document.getElementById("your-turn-text").hidden;
+        if (!is_player_turn)
+        {
+            // PHRASE IS NOT A PRICONNEYOMI
+            if (!is_player_turn && phrase_type === word_list_keys.priconneyomi)
+            {
+                phrase_highlight = "grayscale ";
+            }
+        }
+
         // INSERT DATA
         table_html += "<th class='word-image'>";
         table_html += "<button id='" + word_id + "_" + phrase + "' class='pointer-cursor word-selection-button" + (is_word_already_collected ? " low-opacity" : "") + "' onclick='shiritori(\"" + word_id + "\", \"" + phrase + "\", \"" + phrase_type + "\")'>";
-        table_html += "<img class='notranslate word-image' title='" + phrase + "' src='images/game/" + word_id + ".png' alt=''>";
-        table_html += "<img class='notranslate character-circle' src='images/webpage/" + "character_circle" + ".png' alt=''>";
+        table_html += "<img class='notranslate " + phrase_highlight + "word-image' title='" + phrase + "' src='images/game/" + word_id + ".png' alt=''>";
+        table_html += "<img class='notranslate " + phrase_highlight + "character-circle' src='images/webpage/" + "character_circle" + ".png' alt=''>";
         table_html += "<div class='notranslate end-character webpage-text " + phrase_type + "'>" + get_last_character(phrase) + "</div>";
         table_html += "</button></th>";
 
