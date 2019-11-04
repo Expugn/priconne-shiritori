@@ -57,7 +57,7 @@
     <!-- SETTINGS AREA -->
     <div>
         <br>
-        <button onclick="open_word_list()">Open Word List</button>
+        <button onclick="open_word_list()">Open Word List</button><button style="margin-left: 30px" onclick="show_tips()">Show Tips</button>
         <br><br>
         <button onclick="reset_game()">Reset Game</button>
         <br><br>
@@ -111,6 +111,57 @@
     <h3 class="webpage-text centerText">Progress can be added or removed by <span style="color: gold">clicking</span> on the phrase.</h3>
     <br>
     <div id="word-list"></div>
+</div>
+
+<!-- TIPS DIV -->
+<div id="tips-div" hidden>
+    <br><br>
+    <button onclick="hide_tips()">Hide Tips</button>
+    <br><br><br>
+
+    <hr>
+    <h2 class="webpage-text centerText">Card Highlighting</h2>
+    <p class="webpage-text">
+        Cards are highlighted based off the chance you can collect a new phrase.<br><br>
+        <img src="images/game/yuni.png" style="max-height: 64px" class="priconneyomi" alt=""><br>
+        A <span style="color: rgb(255, 127, 170); font-weight: bold">red</span> color surrounding the card means that <span style="color: gold">Kaya</span> and the Player has a chance of both choosing a new phrase, depending on <span style="color: gold">Kaya</span>'s choice.<br>
+        <span style="color: gold; font-weight: bold">This should be the highest priority card to select if there are no new cards available.</span>
+        <br><br>
+        <img src="images/game/yuni.png" style="max-height: 64px" class="urayomi" alt=""><br>
+        A <span style="color: rgb(46, 169, 255); font-weight: bold">blue</span> color surrounding the card means that the Player has a chance of choosing a new phrase on their next turn, depending on <span style="color: gold">Kaya</span>'s choice.
+        <br><br>
+        <img src="images/game/yuni.png" style="max-height: 64px" class="futsuyomi" alt=""><br>
+        A <span style="color: rgb(115, 175, 85); font-weight: bold">green</span> color surrounding the card means that <span style="color: gold">Kaya</span> has a chance of choosing a new phrase.
+        <br><br>
+        <img src="images/game/yuni.png" style="max-height: 64px" alt=""><br>
+        No coloring means that there is no chance <span style="color: gold">Kaya</span> or the Player will obtain a new phrase by the Player's next turn.
+        <br><br><br>
+        Only one color will highlight the card, but there can be other options available.<br>
+        You can see these options by hovering over the card.
+        <br><br>
+        Cards will ONLY be highlighted on the Player's turn.
+        <br><br>
+        Color Priority:<br>
+        <span style="color: rgb(255, 127, 170); font-weight: bold">Red Color</span> > <span style="color: rgb(46, 169, 255); font-weight: bold">Blue Color</span> > <span style="color: rgb(115, 175, 85); font-weight: bold">Green Color</span>
+        <br><br>
+    </p>
+
+    <hr>
+    <h2 class="webpage-text centerText">Image Styling Meanings</h2>
+    <p class="webpage-text">
+        Cards may have different styling to help you get more information out of them.<br><br>
+        <img src="images/game/yuni.png" style="max-height: 64px" class="low-opacity" alt=""><br>
+        A card with low opacity means that you have already collected the phrase it has.<br>
+        Clicking on the card will not help you fill up your word album as a result.
+        <br><br>
+        <img src="images/game/yuni.png" style="max-height: 64px" class="grayscale" alt=""><br>
+        A card that is grayscale means that this card will not normally be available.<br>
+        Cards can only be grayscale if it is <span style="color: gold">Kaya</span>'s turn and if the card is a "<span style="color: rgb(255, 127, 170); font-weight: bold">Priconneyomi (プリコネヨミ)</span>" phrase.
+        <br>
+        <span style="color: gold">Kaya</span> will NEVER use a "<span style="color: rgb(255, 127, 170); font-weight: bold">Priconneyomi</span>" card, so if a "<span style="color: rgb(255, 127, 170); font-weight: bold">Priconneyomi</span>" is available, you should prioritize using that card if possible.
+
+    </p>
+
 </div>
 
 <!-- LOCALSTORAGE WARNING -->

@@ -288,6 +288,7 @@ function get_possible_words(phrase)
 
             let last_character = get_last_character(phrase);
             let kaya_new_phrases = missing_phrase_map.get(last_character);
+
             npc_choices_map.get(last_character).forEach(function (kaya_phrase)
             {
                 // GET LAST CHARACTER OF KAYA'S OPTION AND SEE IF THE USER CAN GET SOMETHING OUT OF IT
@@ -296,36 +297,31 @@ function get_possible_words(phrase)
 
                 // CHECK STATUS
                 if (kaya_new_phrases.includes(kaya_phrase))
-                {
                     kaya_can_select_new_phrase = true;
-                }
                 if (missing_phrases.length > 0)
-                {
                     user_can_select_new_phrase = true;
-                }
-                if (kaya_new_phrases.includes(kaya_phrase) && missing_phrases.length > 0)
-                {
+                if ((kaya_new_phrases.includes(kaya_phrase) && missing_phrases.length > 0))
                     kaya_and_user_can_select_new_phrases = true;
-                }
             });
 
             // ASSIGN APPROPRIATE COLOR DEPENDING ON RESULT
             if (kaya_and_user_can_select_new_phrases)
             {
                 color_highlight = word_list_keys.priconneyomi + " ";
-                additional_title_text += "\n[*] Kaya and Player has a chance of choosing new phrases!";
             }
             else if (user_can_select_new_phrase)
             {
                 color_highlight = word_list_keys.urayomi + " ";
-                additional_title_text += "\n[*] Player has a chance of choosing a new phrase!";
             }
             else if (kaya_and_user_can_select_new_phrases)
             {
                 color_highlight = word_list_keys.futsuyomi + " ";
-                additional_title_text += "\n[*] Kaya has a chance of choosing a new phrase!";
             }
 
+            // ADDITIONAL TITLE TEXT
+            additional_title_text += (kaya_can_select_new_phrase ? "\n[*] Kaya has a chance of choosing a new phrase!" : "") +
+                (user_can_select_new_phrase ? "\n[*] Player has a chance of choosing a new phrase!" : "") +
+                (kaya_and_user_can_select_new_phrases ? "\n[*] Kaya and Player has a chance of choosing new phrases!" : "");
         }
 
         // INSERT DATA
