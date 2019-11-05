@@ -443,6 +443,8 @@ function build_all_choices()
     let table_html = "";
     let counter = 0;
 
+    let last_word_id = "";
+
     for (let [word_id, word_data] of word_list)
     {
         // COLLECT POSSIBLE PHRASES FROM WORD
@@ -467,8 +469,10 @@ function build_all_choices()
             // BLACKLIST ANY PRICONNEYOMI WORDS SINCE THEY WILL NEVER BE SELECTED BY KAYA
             // ALSO BLACKLIST ANY URAYOMI WORDS SINCE THEY WILL NEVER BE SELECTED BY KAYA AT THE START
             if (words[i][Object.keys(words[i])[0]] !== word_list_keys.priconneyomi &&
-                words[i][Object.keys(words[i])[0]] !== word_list_keys.urayomi)
+                words[i][Object.keys(words[i])[0]] !== word_list_keys.urayomi &&
+                word_id !== last_word_id)
             {
+                last_word_id = word_id;
                 add_word_to_table_html(word_id, words[i]);
             }
         }
