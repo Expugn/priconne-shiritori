@@ -103,6 +103,7 @@
 
 <!-- WORD LIST DIV -->
 <div id="word-list-div" hidden>
+    <br>
     <button onclick="close_word_list()">Close Word List</button><button style="margin-left: 30px" onclick="toggle_word_search()">Word Search</button>
     <br><br>
     <div class="futsuyomi webpage-text">フツウヨミ (<span id="futsuyomi-count">0</span>/<span id="futsuyomi-total-count">0</span>)</div>
@@ -120,14 +121,14 @@
 
 <!-- WORD SEARCH DIV -->
 <div id="word-search-div" hidden>
-    <br><br>
+    <br>
     <button onclick="toggle_word_search()">Close Word Search</button><button style="margin-left: 30px" onclick="reset_word_search()">Reset Word Search</button>
-    <br><br><br>
-    <label for="low-opacity-word-search-checkbox" class="webpage-text">Mark Obtained Words?: </label>
+    <br><br>
+    <label for="low-opacity-word-search-checkbox" class="webpage-text">Mark Obtained Words? : </label>
     <input id="low-opacity-word-search-checkbox"
            type="checkbox"
            onchange="build_phrase_list()">
-    <br><br><br>
+    <br><br>
     <hr>
     <div id="phrase-table-div" hidden>
         <table class="centerTable"><tbody><tr><th><div class="chart" id="tree-simple"></div></th></tr></tbody></table>
@@ -140,9 +141,9 @@
 
 <!-- TIPS DIV -->
 <div id="tips-div" hidden>
-    <br><br>
+    <br>
     <button onclick="hide_tips()">Hide Tips</button>
-    <br><br><br>
+    <br><br>
 
     <hr>
     <h2 class="webpage-text centerText">Card Highlighting</h2>

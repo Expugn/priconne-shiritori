@@ -142,7 +142,7 @@
   "bomb": {
     "futsuyomi": [ "ばくだん", "ボム" ],
     "urayomi": [ "きけんぶつ", "とびどうぐ" ],
-    "priconneyomi": [ "みそぎのいたずらグッズ" ]
+    "priconneyomi": [ "ミソギのいたずらグッズ" ]
   },
   "watermelon": {
     "futsuyomi": [ "すいか" ],
@@ -231,7 +231,7 @@
   },
   "microphone": {
     "futsuyomi": [ "マイク", "うた", "ライブ" ],
-    "urayomi": [ "アイドルのひっすあいてむ" ],
+    "urayomi": [ "アイドルのひっすアイテム" ],
     "priconneyomi": [ "ブリリアントマイク" ]
   },
   "lipstick": {
@@ -447,7 +447,7 @@
   "nanaka": {
     "futsuyomi": [ "ナナカ" ],
     "urayomi": [  ],
-    "priconneyomi": [ "まほうしようじよ", "さいかわ" ]
+    "priconneyomi": [ "まほうしようじよ", "サイカワ" ]
   },
   "kasumi": {
     "futsuyomi": [ "カスミ" ],
@@ -467,7 +467,7 @@
   "kaori": {
     "futsuyomi": [ "カオリ" ],
     "urayomi": [  ],
-    "priconneyomi": [ "りゆうきゆうからて", "はいたーい" ]
+    "priconneyomi": [ "りゆうきゆうからて", "ハイタ～イ" ]
   },
   "io": {
     "futsuyomi": [ "イオ" ],
@@ -502,7 +502,7 @@
   "rin": {
     "futsuyomi": [ "リン" ],
     "urayomi": [  ],
-    "priconneyomi": [ "グウタラ" ]
+    "priconneyomi": [ "ぐうたら" ]
   },
   "eriko": {
     "futsuyomi": [ "エリコ" ],
@@ -552,7 +552,7 @@
   "tomo": {
     "futsuyomi": [ "トモ" ],
     "urayomi": [  ],
-    "priconneyomi": [ "みくまりゆう" ]
+    "priconneyomi": [ "ミクマりゅう" ]
   },
   "shiori": {
     "futsuyomi": [ "シオリ" ],
@@ -587,7 +587,7 @@
   "tamaki": {
     "futsuyomi": [ "タマキ" ],
     "urayomi": [  ],
-    "priconneyomi": [ "ねこむすめ", "ファントムキャッツ" ]
+    "priconneyomi": [ "ネコむすめ", "ファントムキャッツ" ]
   },
   "jun": {
     "futsuyomi": [ "ジユン" ],
@@ -627,7 +627,7 @@
   "tsumugi": {
     "futsuyomi": [ "ツムギ" ],
     "urayomi": [  ],
-    "priconneyomi": [ "テーラー", "レイ様ファンクラブ" ]
+    "priconneyomi": [ "テーラー", "レイさまファンクラブ" ]
   },
   "ayumi": {
     "futsuyomi": [ "アユミ" ],
@@ -657,7 +657,7 @@
   "kyaru": {
     "futsuyomi": [ "キャル" ],
     "urayomi": [  ],
-    "priconneyomi": [ "ツンデレ", "やばいわよ" ]
+    "priconneyomi": [ "ツンデレ", "ヤバイわよ" ]
   },
   "muimi": {
     "futsuyomi": [ "ムイミ" ],

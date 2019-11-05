@@ -14,6 +14,18 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
   - Some futsuyomi phrases are now hidden from the start since it looks like Kaya only chooses only the first futsuyomi phrase and none of the others
   - Additional futsuyomi phrases that start with ん are also now hidden from the start (choosing them causes an instant game over)
 - Made it so the starting phrase list only updates when the word list is closed if a change was made
+- I 100% cleared the word catalog, so I went through and edited some words to match how they're spelled in-game
+  - bomb ; `みそぎのいたずらグッズ` -> `ミソギのいたずらグッズ`
+  - microphone ; `アイドルのひっすあいてむ` -> `アイドルのひっすアイテム`
+  - nanaka ; `さいかわ` -> `サイカワ`
+  - kaori ; `はいたーい` -> `ハイタ～イ`
+  - rin ; `グウタラ` -> `ぐうたら`
+  - tomo ; `みくまりゆう` -> `ミクマりゅう`
+  - tamaki ; `ねこむすめ` -> `ネコむすめ`
+  - tsumugi ; `レイ様ファンクラブ` -> `レイさまファンクラブ`
+  - kyaru ; `やばいわよ` -> `ヤバイわよ`
+  - This is also probably the last time I'm messing around with the word list.
+- Adjusted some button spacing to make it consistent throughout
 ### Fixed
 - Fixed a bug where the green highlight shared the same requirement as priconneyomi
 - Fixed incorrect spelling of Kaya in README

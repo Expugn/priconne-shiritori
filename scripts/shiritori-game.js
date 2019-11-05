@@ -643,7 +643,7 @@ function reset_data()
 {
     if (localStorage.getItem(shiritori_game.localstorage_location) !== null)
     {
-        if (window.confirm("Are you sure you want to reset your data?\nYOUR COLLECTION WILL BE LOST."))
+        if (window.confirm("Are you sure you want to reset your data?\nYOUR CURRENT WORD ALBUM PROGRESS WILL BE LOST."))
         {
             localStorage.removeItem(shiritori_game.localstorage_location);
             location.reload();
