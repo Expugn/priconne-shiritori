@@ -107,6 +107,11 @@ img.priconneyomi {
     outline: 5px solid rgb(255, 127, 170);
     outline-offset: -6px;
 }
+
+img.gold-outline {
+    outline: 5px solid gold;
+    outline-offset: -6px;
+}
 /* IMAGE HIGHLIGHTS END */
 
 /* CSS FOR WORD LIST START */

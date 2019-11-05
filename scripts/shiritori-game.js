@@ -274,12 +274,19 @@ function get_possible_words(phrase)
         let phrase_highlight = "";
         let color_highlight = "";
         let additional_title_text = "";
+        let last_character = get_last_character(phrase);
+        let kaya_new_phrases = missing_phrase_map.get(last_character);
         if (!is_player_turn)
         {
             // PHRASE IS NOT A PRICONNEYOMI
-            if (!is_player_turn && phrase_type === word_list_keys.priconneyomi)
+            if (phrase_type === word_list_keys.priconneyomi)
             {
                 phrase_highlight = "grayscale ";
+            }
+            else
+            {
+                // COLOR HIGHLIGHT GOLD IF THERE IS A WORD THAT A PLAYER NEEDS
+                color_highlight = (missing_phrase_map.get(last_character).length > 0 ? "gold-outline " : "");
             }
         }
         else
@@ -293,9 +300,6 @@ function get_possible_words(phrase)
             let kaya_can_select_new_phrase = false;
             let user_can_select_new_phrase = false;
             let kaya_and_user_can_select_new_phrases = false;
-
-            let last_character = get_last_character(phrase);
-            let kaya_new_phrases = missing_phrase_map.get(last_character);
 
             let kaya_phrases_string = "";
             let user_phrases_string = "";
@@ -332,13 +336,13 @@ function get_possible_words(phrase)
             {
                 color_highlight = word_list_keys.priconneyomi + " ";
             }
+            else if (kaya_can_select_new_phrase)
+            {
+                color_highlight = word_list_keys.futsuyomi + " ";
+            }
             else if (user_can_select_new_phrase)
             {
                 color_highlight = word_list_keys.urayomi + " ";
-            }
-            else if (kaya_and_user_can_select_new_phrases)
-            {
-                color_highlight = word_list_keys.futsuyomi + " ";
             }
 
             // ADDITIONAL TITLE TEXT
@@ -346,6 +350,8 @@ function get_possible_words(phrase)
                 (user_can_select_new_phrase ? "\nPlayer has a chance of choosing a new phrase!\n" + user_phrases_string : "") +
                 (kaya_and_user_can_select_new_phrases ? "\nKaya and Player has a chance of choosing new phrases!\n" + kaya_and_user_phrases_string : "");
         }
+
+        //console.log(phrase + "\n" + additional_title_text);
 
         // INSERT DATA
         table_html += "<th class='word-image'>";

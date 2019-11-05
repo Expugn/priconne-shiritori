@@ -3,6 +3,15 @@ All notable changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.0.2] - 2019-11-04
+### Added
+- Added a gold card highlight for Kaya's turn to indicate what she needs to pick for the user to get a new phrase
+### Changed
+- Green highlight is now a higher priority than Blue since it has a lower chance to occur
+- Edited tips to match new information
+### Fixed
+- Fixed a bug where the green highlight shared the same requirement as priconneyomi
+
 ## [0.0.1] - 2019-11-03
 ### Added
 - `Priconneyomi` phrases are now gray-scaled if it is Kaya's turn
