@@ -10,7 +10,8 @@ This is a tool that helps non-Japanese speakers complete the
 Although this tool can be used just to easily clear the minigame, it 
 also helps you figure out the words you need to complete the word catalog.
 
-Completing the word catalog grants a title as a reward.
+Completing the word catalog (100%) grants the following title as a reward:<br>
+![Title](https://raw.githubusercontent.com/Expugn/priconne-shiritori/master/images/webpage/icon_emblem_11001041.png)
 
 ## How to Use
 1. Open the tool URL in a web browser (<https://expugn.github.io/priconne-shiritori/>)

@@ -330,7 +330,6 @@ function get_possible_words(phrase)
                     kaya_and_user_can_select_new_phrases = true;
                     kaya_and_user_phrases_string += "  - " + kaya_phrase + " -> (" + missing_phrases.length + " New Choices)\n";
                 }
-
             });
 
             // ASSIGN APPROPRIATE COLOR DEPENDING ON RESULT
@@ -358,7 +357,7 @@ function get_possible_words(phrase)
         // INSERT DATA
         table_html += "<th class='word-image'>";
         table_html += "<button id='" + word_id + "_" + phrase + "' class='pointer-cursor word-selection-button" + (is_word_already_collected ? " low-opacity" : "") + "' onclick='shiritori(\"" + word_id + "\", \"" + phrase + "\", \"" + phrase_type + "\")'>";
-        table_html += "<img class='notranslate " + color_highlight + phrase_highlight + "blackOutline word-image' title='" + phrase + "\n" + additional_title_text + "' src='images/game/" + word_id + ".png' alt=''>";
+        table_html += "<img class='notranslate " + color_highlight + phrase_highlight + " word-image' title='" + phrase + "\n" + additional_title_text + "' src='images/game/" + word_id + ".png' alt=''>";
         table_html += "<img class='notranslate " + phrase_highlight + "character-circle' src='images/webpage/" + "character_circle" + ".png' alt=''>";
         table_html += "<div class='notranslate end-character webpage-text " + phrase_type + "'>" + get_last_character(phrase) + "</div>";
         table_html += "</button></th>";
@@ -442,7 +441,6 @@ function build_all_choices()
 {
     let table_html = "";
     let counter = 0;
-
     let last_word_id = "";
 
     for (let [word_id, word_data] of word_list)
@@ -468,12 +466,17 @@ function build_all_choices()
             // phrase_type = futsuyomi | urayomi | priconneyomi ; determine color of character
             // BLACKLIST ANY PRICONNEYOMI WORDS SINCE THEY WILL NEVER BE SELECTED BY KAYA
             // ALSO BLACKLIST ANY URAYOMI WORDS SINCE THEY WILL NEVER BE SELECTED BY KAYA AT THE START
+            // ALSO BLACKLIST ANY FUTSUYOMI WORDS THAT AREN'T THE FIRST ONE
+            // ALSO BLACKLIST ANY FUTSUYOMI WORDS THAT END WITH ん
             if (words[i][Object.keys(words[i])[0]] !== word_list_keys.priconneyomi &&
                 words[i][Object.keys(words[i])[0]] !== word_list_keys.urayomi &&
                 word_id !== last_word_id)
             {
                 last_word_id = word_id;
-                add_word_to_table_html(word_id, words[i]);
+                if (get_last_character(Object.keys(words[i])[0]) !== "ん")
+                {
+                    add_word_to_table_html(word_id, words[i]);
+                }
             }
         }
     }

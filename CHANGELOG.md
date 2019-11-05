@@ -12,6 +12,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Edited tips to match new information
 - Urayomi phrases are now hidden at the start since Kaya will never select them
   - Some futsuyomi phrases are now hidden from the start since it looks like Kaya only chooses only the first futsuyomi phrase and none of the others
+  - Additional futsuyomi phrases that start with ん are also now hidden from the start (choosing them causes an instant game over)
 - Made it so the starting phrase list only updates when the word list is closed if a change was made
 ### Fixed
 - Fixed a bug where the green highlight shared the same requirement as priconneyomi
