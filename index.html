@@ -123,6 +123,11 @@
     <br><br>
     <button onclick="toggle_word_search()">Close Word Search</button><button style="margin-left: 30px" onclick="reset_word_search()">Reset Word Search</button>
     <br><br><br>
+    <label for="low-opacity-word-search-checkbox" class="webpage-text">Mark Obtained Words?: </label>
+    <input id="low-opacity-word-search-checkbox"
+           type="checkbox"
+           onchange="build_phrase_list()">
+    <br><br><br>
     <hr>
     <div id="phrase-table-div" hidden>
         <table class="centerTable"><tbody><tr><th><div class="chart" id="tree-simple"></div></th></tr></tbody></table>
@@ -274,8 +279,8 @@
                 }
                 console.log(get_colored_message(shiritori_game.sender_name, "User saved data loaded!", message_status.SUCCESS));
                 build_all_choices();
-                build_phrase_list();
             }
+            build_phrase_list();
         }
     }
 </script>

@@ -15,6 +15,8 @@ let shiritori_game = {
     urayomi_total_phrases: 0,
     priconneyomi_total_phrases: 0,
 
+    unsaved_changes: false,
+
     // GAME VARIABLES
     turn_count: 0,
     rush_mode: false,
@@ -609,7 +611,7 @@ function toggle_phrase(word_id, phrase, phrase_type)
 
     if (shiritori_game.turn_count === 0)
     {
-        build_all_choices();
+        shiritori_game.unsaved_changes = true;
     }
 }
 

@@ -102,6 +102,8 @@ function build_phrase_list()
     let table_html = "";
     let counter = 0;
 
+    let low_opacity_enabled = document.getElementById("low-opacity-word-search-checkbox").checked;
+
     for (let [word_id, word_data] of word_list)
     {
         // COLLECT POSSIBLE PHRASES FROM WORD
@@ -147,9 +149,15 @@ function build_phrase_list()
         let phrase = Object.keys(phrase_data)[0];
         let phrase_type = phrase_data[phrase];
 
+        let low_opacity = "";
+        if (shiritori_game.collected_words.includes(word_id + ";" + phrase + ";" + phrase_type) && low_opacity_enabled)
+        {
+            low_opacity = "low-opacity ";
+        }
+
         // INSERT DATA
         table_html += "<th class='word-image'>";
-        table_html += "<button id='" + word_id + "_" + phrase + "_word_search' class='pointer-cursor word-selection-button' onclick='create_table(\"" + word_id + "\;" + phrase + "\;" + phrase_type + "\")'>";
+        table_html += "<button id='" + word_id + "_" + phrase + "_word_search' class='pointer-cursor " + low_opacity + "word-selection-button' onclick='create_table(\"" + word_id + "\;" + phrase + "\;" + phrase_type + "\")'>";
         table_html += "<img class='notranslate word-image' title='" + phrase + "' src='images/game/" + word_id + ".png' alt=''>";
         table_html += "<img class='notranslate character-circle' src='images/webpage/" + "character_circle" + ".png' alt=''>";
         table_html += "<div class='notranslate end-character webpage-text " + phrase_type + "'>" + get_last_character(phrase) + "</div>";
