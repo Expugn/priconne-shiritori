@@ -9,6 +9,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ### Changed
 - Green highlight is now a higher priority than Blue since it has a lower chance to occur
 - Edited tips to match new information
+- Urayomi phrases are now hidden at the start since Kaya will never select them
 ### Fixed
 - Fixed a bug where the green highlight shared the same requirement as priconneyomi
 

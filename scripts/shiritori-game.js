@@ -463,7 +463,9 @@ function build_all_choices()
             // (word_id, {phrase : phrase_type})
             // phrase_type = futsuyomi | urayomi | priconneyomi ; determine color of character
             // BLACKLIST ANY PRICONNEYOMI WORDS SINCE THEY WILL NEVER BE SELECTED BY KAYA
-            if (words[i][Object.keys(words[i])[0]] !== word_list_keys.priconneyomi)
+            // ALSO BLACKLIST ANY URAYOMI WORDS SINCE THEY WILL NEVER BE SELECTED BY KAYA AT THE START
+            if (words[i][Object.keys(words[i])[0]] !== word_list_keys.priconneyomi ||
+                words[i][Object.keys(words[i])[0]] !== word_list_keys.urayomi)
             {
                 add_word_to_table_html(word_id, words[i]);
             }
