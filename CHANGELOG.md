@@ -6,12 +6,14 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ## [0.0.2] - 2019-11-04
 ### Added
 - Added a gold card highlight for Kaya's turn to indicate what she needs to pick for the user to get a new phrase
+- Word Search table that allows users to reverse search a word to see which words they need to go through prior to accessing it
 ### Changed
 - Green highlight is now a higher priority than Blue since it has a lower chance to occur
 - Edited tips to match new information
 - Urayomi phrases are now hidden at the start since Kaya will never select them
 ### Fixed
 - Fixed a bug where the green highlight shared the same requirement as priconneyomi
+- Fixed incorrect spelling of Kaya in README
 
 ## [0.0.1] - 2019-11-03
 ### Added

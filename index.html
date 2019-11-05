@@ -32,14 +32,19 @@
 
     <!-- SCRIPTS -->
     <script src="scripts/jquery-3.4.1.min.js"></script>
+    <script src="scripts/treant/vendor/raphael.js"></script>
+    <script src="scripts/treant/Treant.js"></script>
     <script src="scripts/wanakana.min.js"></script>
     <script src="scripts/console.js"></script>
     <script src="scripts/read-word-list-json.js"></script>
     <script src="scripts/shiritori-game.js"></script>
     <script src="scripts/webpage.js"></script>
+    <script src="scripts/phrase-table.js"></script>
 
     <!-- CSS STYLE SHEETS -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/phrase-tree.css">
+    <link rel="stylesheet" href="scripts/treant/Treant.css" type="text/css">
 </head>
 
 <body class="background">
@@ -98,7 +103,7 @@
 
 <!-- WORD LIST DIV -->
 <div id="word-list-div" hidden>
-    <button onclick="close_word_list()">Close Word List</button>
+    <button onclick="close_word_list()">Close Word List</button><button style="margin-left: 30px" onclick="toggle_word_search()">Word Search</button>
     <br><br>
     <div class="futsuyomi webpage-text">フツウヨミ (<span id="futsuyomi-count">0</span>/<span id="futsuyomi-total-count">0</span>)</div>
     <br>
@@ -111,6 +116,21 @@
     <h3 class="webpage-text centerText">Progress can be added or removed by <span style="color: gold">clicking</span> on the phrase.</h3>
     <br>
     <div id="word-list"></div>
+</div>
+
+<!-- WORD SEARCH DIV -->
+<div id="word-search-div" hidden>
+    <br><br>
+    <button onclick="toggle_word_search()">Close Word Search</button><button style="margin-left: 30px" onclick="reset_word_search()">Reset Word Search</button>
+    <br><br><br>
+    <hr>
+    <div id="phrase-table-div" hidden>
+        <table class="centerTable"><tbody><tr><th><div class="chart" id="tree-simple"></div></th></tr></tbody></table>
+    </div>
+    <br>
+    <table class="centerTable">
+        <tbody id="word-search-table"></tbody>
+    </table>
 </div>
 
 <!-- TIPS DIV -->
@@ -254,6 +274,7 @@
                 }
                 console.log(get_colored_message(shiritori_game.sender_name, "User saved data loaded!", message_status.SUCCESS));
                 build_all_choices();
+                build_phrase_list();
             }
         }
     }

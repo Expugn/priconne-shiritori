@@ -22,11 +22,11 @@ Completing the word catalog grants a title as a reward.
     4. Click `Close Word List` if everything looks correct
       
 3. Start the `Great Battle! Shiritori Dragons` minigame
-4. Look at the card **Kaga** chooses, pause the minigame and select that card.
+4. Look at the card **Kaya** chooses, pause the minigame and select that card.
 5. A list of possible options will be displayed on the tool. Find a phrase 
 that you need or that is good enough to continue if you can not locate any phrases you need.
 6. Eventually, you may enter a `Rush` state. If you can manage to select multiple cards during this time, 
-turn on `Rush Mode` by clicking the button that only appears on **Kaga**'s turn.
+turn on `Rush Mode` by clicking the button that only appears on **Kaya**'s turn.
 7. Repeat until the minigame ends. When the game is over, reset the board by clicking the `Reset Game` button.
 
 ## Information/Data Credits

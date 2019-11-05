@@ -1,0 +1,42 @@
+/* optional Container STYLES */
+.chart { height: 600px; margin: 5px; width: 900px; }
+.Treant > .node {  }
+.Treant > p {  font-weight: bold; font-size: 12px; }
+.node-name { font-weight: bold; }
+
+.phraseTree {
+    padding: 2px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    background-color: aliceblue;
+    border: 1px solid #000;
+    width: 200px;
+
+    color: aliceblue;
+    font-family: "Trebuchet MS", Arial, serif;
+    text-shadow: 1px 1px 1px #000000;
+    font-size: 13px;
+    font-weight: bolder;
+}
+
+.phraseTree img {
+    margin-right:  10px;
+    max-height: 48px;
+}
+
+.desiredWord {
+    background-color: dimgrey !important;
+}
+
+p.futsuyomi {
+    color: rgb(115, 175, 85) !important;
+}
+
+p.urayomi {
+    color: rgb(46, 169, 255) !important;
+}
+
+p.priconneyomi {
+    color: rgb(255, 127, 170) !important;
+}

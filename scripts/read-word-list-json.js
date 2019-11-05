@@ -5,6 +5,7 @@ const _read_word_list_js = Object.freeze({
 // GLOBAL VARIABLES
 let word_list = new Map();
 let result_map = new Map();
+let reverse_result_map = new Map();
 let word_list_loaded = false;
 const word_list_keys = Object.freeze({
     futsuyomi: 'futsuyomi',
@@ -12,6 +13,9 @@ const word_list_keys = Object.freeze({
     priconneyomi: 'priconneyomi',
 });
 
+
+let result_map_counter = 0;
+let reverse_result_map_counter = 0;
 // RUN AT STARTUP
 read_word_list(function () {
     console.log(get_colored_message(_read_word_list_js.sender_name, "Word list loaded!", message_status.SUCCESS));
@@ -67,8 +71,6 @@ function read_word_list(callback)
     const file_path = "/" + window.location.pathname.substring(0, window.location.pathname.indexOf('/')) + window.location.pathname.split('/')[1] + "/data/word_list.json";
     console.log(get_colored_message(_read_word_list_js.sender_name, "Reading ", message_status.INFO) + highlight_code(file_path) + message_status.INFO + "...");
 
-    let character_blacklist = [];
-
     return $(function () {
         $.ajax({
             'global': false,
@@ -104,26 +106,54 @@ function read_word_list(callback)
         word_array.forEach(function (phrase)
         {
             let first_character = wanakana.toHiragana(phrase[0]);
-
+            let last_character = get_last_character(phrase);
             let word = word_id + ";" + phrase + ";" + phrase_type;
 
             if (!result_map.has(first_character))
+            {
+                // FIRST CHARACTER DOES NOT EXIST, CREATE NEW ENTRY
+                let new_array = [];
+                new_array.push(word);
+
+                // ADD NEW DATA TO RESULT MAP
+                result_map.set(first_character, new_array);
+
+                result_map_counter++;
+            }
+            else
+            {
+                // FIRST CHARACTER ALREADY EXISTS, ADD TO EXISTING ARRAY
+                let data_array = result_map.get(first_character);
+                data_array.push(word);
+
+                // OVERWRITE DATA TO RESULT MAP
+                result_map.set(first_character, data_array);
+
+                result_map_counter++;
+            }
+
+            // ALSO BUILD REVERSE RESULT MAP
+            if (!reverse_result_map.has(last_character))
             {
                 // LAST CHARACTER DOES NOT EXIST, CREATE NEW ENTRY
                 let new_array = [];
                 new_array.push(word);
 
                 // ADD NEW DATA TO RESULT MAP
-                result_map.set(first_character, new_array);
+                reverse_result_map.set(last_character, new_array);
+
+                reverse_result_map_counter++;
             }
             else
             {
                 // LAST CHARACTER ALREADY EXISTS, ADD TO EXISTING ARRAY
-                let data_array = result_map.get(first_character);
+                let data_array = reverse_result_map.get(last_character);
                 data_array.push(word);
 
-                // OVERWRITE DATA TO RESULT MAP
-                result_map.set(first_character, data_array);
+                // OVERWRITE DATA TO REVERSE RESULT MAP
+                reverse_result_map.set(last_character, data_array);
+
+                reverse_result_map_counter++;
             }
         });
     }
