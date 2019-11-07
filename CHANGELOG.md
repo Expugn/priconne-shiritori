@@ -3,6 +3,19 @@ All notable changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.0.3] - 2019-11-06
+### Added
+- Added an undo button in case the player makes a mistake
+  - Undo button is disabled when Rush mode is toggled
+  - Undo button only allows for one undo
+- Added the option to search for the phrases that the word you selected can go into in Word Search
+### Changed
+- Tips formatting
+- Word list is now hidden when a game is in progress to avoid tampering
+  - It will be shown when the game in progress is reset.
+### Fixed
+- Fixed(?) a visual error with the currently selected phrase's character going out of bounds when a ん has been hit on mobile devices
+
 ## [0.0.2] - 2019-11-04
 ### Added
 - Added a gold card highlight for Kaya's turn to indicate what she needs to pick for the user to get a new phrase

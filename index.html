@@ -79,6 +79,7 @@
             <img class="latest-selection-character-circle" src="images/webpage/character_circle.png" alt=""><br>
             <div id="latest-selection-character" class="latest-selection-character">x</div>
             <h3 id="latest-selection-text" class="centerText" style="color: gold;">phrase_text</h3>
+            <button id="undo-button" onclick="undo_phrase()" disabled>Made a mistake? Undo!</button>
         </div>
         <h3 id="your-turn-text" class="webpage-text centerText" hidden><span style="color:gold">Your turn.</span><br>Select the option you chose in game.</h3>
         <h3 id="opponent-turn-text" class="webpage-text centerText" hidden><span style="color:gold">Kaya</span>'s turn.<br>Select the card that <span style="color:gold">Kaya</span> selected.</h3>
@@ -114,20 +115,27 @@
     <br>
     <button onclick="reset_data()">Reset Data</button>
     <br><br>
-    <h3 class="webpage-text centerText">Progress can be added or removed by <span style="color: gold">clicking</span> on the phrase.</h3>
-    <br>
-    <div id="word-list"></div>
+    <div id="word-list-contents">
+        <h3 class="webpage-text centerText">Progress can be added or removed by <span style="color: gold">clicking</span> on the phrase.</h3>
+        <br>
+        <div id="word-list"></div>
+    </div>
+    <h3 id="word-list-hidden-warning" class="webpage-text centerText" hidden>Word list progress cannot be modified while a game is in progress.<br><span style="color: gold">Reset the game to make the word list visible again.</span></h3>
 </div>
 
 <!-- WORD SEARCH DIV -->
 <div id="word-search-div" hidden>
     <br>
-    <button onclick="toggle_word_search()">Close Word Search</button><button style="margin-left: 30px" onclick="reset_word_search()">Reset Word Search</button>
+    <button onclick="toggle_word_search()">Close Word Search</button><button id="reset-word-search-button" style="margin-left: 30px" onclick="reset_word_search()" hidden>Reset Word Search</button>
     <br><br>
     <label for="low-opacity-word-search-checkbox" class="webpage-text">Mark Obtained Words? : </label>
     <input id="low-opacity-word-search-checkbox"
            type="checkbox"
            onchange="build_phrase_list()">
+    <label for="result-search-checkbox" class="webpage-text" style="margin-left: 30px">Find Resulting Words? : </label>
+    <input id="result-search-checkbox"
+           type="checkbox"
+           onchange="create_table(_phrase_table_js.word_searched)">
     <br><br>
     <hr>
     <div id="phrase-table-div" hidden>
@@ -173,10 +181,10 @@
         <br><br>
         Color Priority:<br>
         <span style="color: rgb(255, 127, 170); font-weight: bold">Red Color</span> > <span style="color: rgb(115, 175, 85); font-weight: bold">Green Color</span> > <span style="color: rgb(46, 169, 255); font-weight: bold">Blue Color</span>
-        <br><br>
     </p>
 
     <hr>
+
     <h2 class="webpage-text centerText">Image Styling Meanings</h2>
     <p class="webpage-text">
         Cards may have different styling to help you get more information out of them.<br><br>
@@ -192,6 +200,7 @@
     </p>
 
     <hr>
+
     <h2 class="webpage-text centerText">Tooltip (Title) Information</h2>
     <p class="webpage-text">
         While the game is in progress, the Player can hover over a card to reveal more information about it.

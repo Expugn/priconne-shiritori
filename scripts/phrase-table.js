@@ -1,27 +1,35 @@
-const _phrase_table_js = Object.freeze({
+let _phrase_table_js = {
     sender_name: 'Phrase Table',
 
     class_header: 'phraseTable-',
-});
 
-let _phrase_table_js_table_visible = false;
+    table_visible: false,
+    word_searched: '',
+};
 
 function create_table(desired_word)
 {
+    if (desired_word === "")
+    {
+        return;
+    }
+
     console.log(get_colored_message(_phrase_table_js.sender_name, "Building phrase table for " + desired_word, message_status.INFO));
+    _phrase_table_js.word_searched = desired_word;
+
     // SHOW TREE IF NOT VISIBLE
-    if (!_phrase_table_js_table_visible)
+    if (!_phrase_table_js.table_visible)
     {
         document.getElementById("phrase-table-div").hidden = false;
         document.getElementById("word-search-table").hidden = true;
-        _phrase_table_js_table_visible = true;
+        _phrase_table_js.table_visible = true;
     }
 
     // TREE CONFIG
     let chart_config = {
         chart: {
             container: "#tree-simple",
-            rootOrientation:  'EAST',
+            rootOrientation: 'EAST',
             connectors: {
                 type: 'step'
             },
@@ -40,61 +48,109 @@ function create_table(desired_word)
         }
     };
 
-    let dw_data = desired_word.split(';');
-    let dw_fc = wanakana.toHiragana(dw_data[1][0]);
     let phrase_counter = 0;
-
-    // INSERT INFO FROM DESIRED WORD INTO TREE (NAME / IMAGE / CLASS)
-    chart_config["nodeStructure"]["text"]["name"] = dw_data[1] + " [" + get_last_character(dw_data[1]) + "]";
-    chart_config["nodeStructure"]["image"] = "images/game/" + dw_data[0] + ".png";
-    chart_config["nodeStructure"]["HTMLclass"] += " " + dw_data[2];
-
-    // FIND POSSIBLE WORDS THAT CAN LEAD TO DESIRED WORD
-    let array_of_words_that_end_with_first_char = reverse_result_map.get(dw_fc);
-    array_of_words_that_end_with_first_char.forEach(function (w)
+    if (!document.getElementById("result-search-checkbox").checked)
     {
-        let w_data = w.split(';');
+        let dw_data = desired_word.split(';');
+        let dw_fc = wanakana.toHiragana(dw_data[1][0]);
 
-        // BUILD TREE OBJECT
-        let phrase_map = {};
-        phrase_map["HTMLclass"] = _phrase_table_js.class_header + phrase_counter + " " + w_data[2];
-        phrase_map["text"] = {"name" : w_data[1] + " [" + get_last_character(w_data[1]) + "]"};
-        phrase_map["image"] = "images/game/" + w_data[0] + ".png";
+        // INSERT INFO FROM DESIRED WORD INTO TREE (NAME / IMAGE / CLASS)
+        chart_config["nodeStructure"]["text"]["name"] = dw_data[1] + " [" + get_last_character(dw_data[1]) + "]";
+        chart_config["nodeStructure"]["image"] = "images/game/" + dw_data[0] + ".png";
+        chart_config["nodeStructure"]["HTMLclass"] += " " + dw_data[2];
 
-        // ADD OBJECT TO TREE CHILDREN
-        chart_config["nodeStructure"]["children"].push(phrase_map);
-
-        // INCREMENT COUNTER
-        phrase_counter++;
-    });
-
-    // CONSTRUCT TREE
-    phrase_counter = 0;
-    new Treant(chart_config, function () {
-        // GO THROUGH ARRAY AND ADD DIV FUNCTIONALITY
+        // FIND POSSIBLE WORDS THAT CAN LEAD TO DESIRED WORD
+        let array_of_words_that_end_with_first_char = reverse_result_map.get(dw_fc);
         array_of_words_that_end_with_first_char.forEach(function (w)
         {
-            // GET CHILD DIV
-            let phrase_div = document.getElementsByClassName(_phrase_table_js.class_header + phrase_counter)[0];
+            let w_data = w.split(';');
 
-            // ADD FUNCTIONALITY TO DIV
-            phrase_div.style.cursor = 'pointer';
-            phrase_div.onclick = function ()
-            {
-                create_table(w);
-            };
+            // BUILD TREE OBJECT
+            let phrase_map = {};
+            phrase_map["HTMLclass"] = _phrase_table_js.class_header + phrase_counter + " " + w_data[2];
+            phrase_map["text"] = {"name" : w_data[1] + " [" + get_last_character(w_data[1]) + "]"};
+            phrase_map["image"] = "images/game/" + w_data[0] + ".png";
+
+            // ADD OBJECT TO TREE CHILDREN
+            chart_config["nodeStructure"]["children"].push(phrase_map);
 
             // INCREMENT COUNTER
             phrase_counter++;
         });
-    }, $);
+
+        // CONSTRUCT TREE
+        construct_tree(array_of_words_that_end_with_first_char);
+    }
+    else
+    {
+        // FLIP CHART
+        chart_config["chart"]["rootOrientation"] = "WEST";
+
+        // GET DATA
+        let dw_data = desired_word.split(';');
+        let dw_lc = get_last_character(dw_data[1]);
+
+        // INSERT INFO FROM DESIRED WORD INTO TREE (NAME / IMAGE / CLASS)
+        chart_config["nodeStructure"]["text"]["name"] = dw_data[1] + " [" + get_last_character(dw_data[1]) + "]";
+        chart_config["nodeStructure"]["image"] = "images/game/" + dw_data[0] + ".png";
+        chart_config["nodeStructure"]["HTMLclass"] += " " + dw_data[2];
+
+        // FIND POSSIBLE WORDS DESIRED WORD CAN MAKE
+        let array_of_words_that_begin_with_last_character = result_map.get(dw_lc);
+        array_of_words_that_begin_with_last_character.forEach(function (w)
+        {
+            let w_data = w.split(';');
+
+            // BUILD TREE OBJECT
+            let phrase_map = {};
+            phrase_map["HTMLclass"] = _phrase_table_js.class_header + phrase_counter + " " + w_data[2];
+            phrase_map["text"] = {"name" : w_data[1] + " [" + get_last_character(w_data[1]) + "]"};
+            phrase_map["image"] = "images/game/" + w_data[0] + ".png";
+
+            // ADD OBJECT TO TREE CHILDREN
+            chart_config["nodeStructure"]["children"].push(phrase_map);
+
+            // INCREMENT COUNTER
+            phrase_counter++;
+        });
+
+        // CONSTRUCT TREE
+        construct_tree(array_of_words_that_begin_with_last_character);
+    }
+
+    function construct_tree(array_of_children)
+    {
+        // CONSTRUCT TREE
+        phrase_counter = 0;
+        new Treant(chart_config, function () {
+            // GO THROUGH ARRAY AND ADD DIV FUNCTIONALITY
+            array_of_children.forEach(function (w)
+            {
+                // GET CHILD DIV
+                let phrase_div = document.getElementsByClassName(_phrase_table_js.class_header + phrase_counter)[0];
+
+                // ADD FUNCTIONALITY TO DIV
+                phrase_div.style.cursor = 'pointer';
+                phrase_div.onclick = function ()
+                {
+                    create_table(w);
+                };
+
+                // INCREMENT COUNTER
+                phrase_counter++;
+            });
+        }, $);
+
+        document.getElementById("reset-word-search-button").hidden = false;
+    }
 }
 
 function reset_word_search()
 {
     document.getElementById("phrase-table-div").hidden = true;
     document.getElementById("word-search-table").hidden = false;
-    _phrase_table_js_table_visible = false;
+    document.getElementById("reset-word-search-button").hidden = true;
+    _phrase_table_js.table_visible = false;
 }
 
 function build_phrase_list()

@@ -20,6 +20,8 @@ let shiritori_game = {
     // GAME VARIABLES
     turn_count: 0,
     rush_mode: false,
+    last_phrase_played: '',
+    new_phrase_collected: false,
 };
 
 function shiritori(word_id, phrase, phrase_type)
@@ -30,14 +32,22 @@ function shiritori(word_id, phrase, phrase_type)
     if (shiritori_game.turn_count === 0)
     {
         shiritori_game.turn_count++;
+        shiritori_game.last_phrase_played = '';
+        shiritori_game.new_phrase_collected = false;
         document.getElementById("turn-counter").innerHTML = shiritori_game.turn_count;
         document.getElementById("turn-text").hidden = false;
         document.getElementById("game-start-tip").hidden = true;
         document.getElementById("your-turn-text").hidden = false;
         document.getElementById("latest-selection").hidden = false;
+        document.getElementById("word-list-contents").hidden = true;
+        document.getElementById("word-list-hidden-warning").hidden = false;
     }
     else
     {
+        // ENABLE UNDO BUTTON
+        document.getElementById("undo-button").disabled = false;
+        shiritori_game.last_phrase_played = document.getElementById("latest-selection-image").alt;
+
         if (!shiritori_game.rush_mode)
         {
             if (!document.getElementById("your-turn-text").hidden)
@@ -73,6 +83,7 @@ function shiritori(word_id, phrase, phrase_type)
 function update_latest_selection(word_id, phrase, phrase_type)
 {
     document.getElementById("latest-selection-image").src = "images/game/" + word_id + ".png";
+    document.getElementById("latest-selection-image").alt = word_id + ";" + phrase + ";" + phrase_type;
     document.getElementById("latest-selection-character").innerHTML = get_last_character(phrase);
     document.getElementById("latest-selection-text").innerHTML = phrase;
 
@@ -80,6 +91,58 @@ function update_latest_selection(word_id, phrase, phrase_type)
     document.getElementById("latest-selection-character").classList.remove(word_list_keys.urayomi);
     document.getElementById("latest-selection-character").classList.remove(word_list_keys.priconneyomi);
     document.getElementById("latest-selection-character").classList.add(phrase_type);
+}
+
+function undo_phrase()
+{
+    if (shiritori_game.last_phrase_played !== '')
+    {
+        let phrase_data = shiritori_game.last_phrase_played.split(';');
+        let phrase_data_current = document.getElementById("latest-selection-image").alt.split(';');
+
+        // DISABLE UNDO BUTTON
+        document.getElementById("undo-button").disabled = true;
+
+        // REMOVE CURRENT WORD FROM COLLECTION IF NEW
+        if (shiritori_game.new_phrase_collected)
+        {
+            remove_word_from_collection(phrase_data_current[0], phrase_data_current[1], phrase_data_current[2]);
+        }
+
+        // REVERSE GAME STATUS
+        if (!shiritori_game.rush_mode)
+        {
+            if (document.getElementById("your-turn-text").hidden)
+            {
+                // IT IS CURRENTLY KAYA'S TURN, GO BACK TO PLAYER'S TURN
+                document.getElementById("your-turn-text").hidden = false;
+                document.getElementById("opponent-turn-text").hidden = true;
+                document.getElementById("rush-mode-button-text").hidden = true;
+            }
+            else
+            {
+                // IT IS CURRENTLY THE PLAYER'S TURN, GO BACK TO KAYA'S TURN
+                document.getElementById("your-turn-text").hidden = true;
+                document.getElementById("opponent-turn-text").hidden = false;
+                document.getElementById("rush-mode-button-text").hidden = false;
+
+                // DECREASE TURN COUNTER
+                shiritori_game.turn_count--;
+                document.getElementById("turn-counter").innerHTML = shiritori_game.turn_count;
+            }
+        }
+
+        // HIDE ん CHARACTER HIT TEXT
+        document.getElementById("n-character-hit-text").hidden = true;
+
+        // UPDATE LATEST SELECTION
+        update_latest_selection(phrase_data[0], phrase_data[1], phrase_data[2]);
+
+        // BUILD NEW LIST OF POSSIBLE WORDS
+        get_possible_words(phrase_data[1]);
+
+        console.log(get_colored_message(shiritori_game.sender_name, "Last move has been undone. Going back to " + highlight_code(shiritori_game.last_phrase_played), message_status.SUCCESS));
+    }
 }
 
 function add_word_to_collection(word_id, phrase, phrase_type)
@@ -90,6 +153,7 @@ function add_word_to_collection(word_id, phrase, phrase_type)
     if (!shiritori_game.collected_words.includes(word))
     {
         console.log(get_colored_message(shiritori_game.sender_name, "New word collected: " + highlight_code(word), message_status.SUCCESS));
+        shiritori_game.new_phrase_collected = true;
 
         try
         {
@@ -130,6 +194,10 @@ function add_word_to_collection(word_id, phrase, phrase_type)
             console.log(get_colored_message(shiritori_game.sender_name, "\tOops, maybe not... this word has problems! Removing it from existence instead.", message_status.WARNING));
             alert("The following word has been removed from your saved data:\n" + word_id + " ; " + phrase + " ; " + phrase_type + "\n\nGo to Word List and re-enable the word if needed.");
         }
+    }
+    else
+    {
+        shiritori_game.new_phrase_collected = false;
     }
 }
 
@@ -374,6 +442,8 @@ function reset_game()
         document.getElementById("rush-mode-button").classList.toggle("low-opacity");
     }
     shiritori_game.turn_count = 0;
+    shiritori_game.last_phrase_played = '';
+    shiritori_game.new_phrase_collected = false;
     document.getElementById("turn-text").hidden = true;
     document.getElementById("game-start-tip").hidden = false;
     document.getElementById("your-turn-text").hidden = true;
@@ -382,6 +452,9 @@ function reset_game()
     document.getElementById("rush-mode-text").hidden = true;
     document.getElementById("n-character-hit-text").hidden = true;
     document.getElementById("latest-selection").hidden = true;
+    document.getElementById("undo-button").disabled = true;
+    document.getElementById("word-list-contents").hidden = false;
+    document.getElementById("word-list-hidden-warning").hidden = true;
 
     build_all_choices();
 
@@ -535,6 +608,9 @@ function toggle_rush_mode()
         document.getElementById("opponent-turn-text").hidden = false;
         document.getElementById("rush-mode-text").hidden = true;
     }
+
+    // DISABLE UNDO BUTTON
+    document.getElementById("undo-button").disabled = true;
 }
 
 function build_word_list()

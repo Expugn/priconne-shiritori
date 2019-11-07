@@ -141,13 +141,12 @@ img.latest-selection-character-circle {
 }
 
 div.latest-selection-character {
-    display: inline-block;
     margin-top: -30px;
     margin-left: 93px;
     font-weight: bolder;
     font-size: 35px;
     position: relative;
-    bottom: 61px;
+    bottom: 56px;
     right: 2px;
 }
 #latest-selection-text {
@@ -157,6 +156,10 @@ div.latest-selection-character {
 #latest-selection {
     padding-top: 20px;
     margin-bottom: -60px;
+}
+#undo-button {
+    position: relative;
+    bottom: 85px;
 }
 /* CSS FOR LATEST SELECTION END */
 
