@@ -133,37 +133,30 @@ div.word-list-text {
 
 /* CSS FOR LATEST SELECTION START */
 img.latest-selection-character-circle {
-    display: inline-block;
-    margin-left: 90px;
     position: relative;
-    bottom: 74px;
-    left: 1px;
+    bottom: 73px;
+    left: 46px;
 }
 
 div.latest-selection-character {
-    display: inline-block;
-    margin-left: 93px;
     font-weight: bolder;
     font-size: 35px;
+
     position: relative;
-    bottom: 139px;
-    right: 1px;
+    bottom: 137px;
+    left: 44px;
 }
+
 #latest-selection-text {
     font-weight: bolder;
     font-size: 24px;
+
     position: relative;
-    padding-top: 20px;
-    bottom: 170px;
+    bottom: 140px;
 }
+
 #latest-selection {
-    padding-top: 20px;
-    margin-bottom: -60px;
-    height: 310px;
-}
-#undo-button {
-    position: relative;
-    bottom: 195px;
+    height: 220px;
 }
 /* CSS FOR LATEST SELECTION END */
 

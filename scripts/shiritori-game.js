@@ -41,6 +41,7 @@ function shiritori(word_id, phrase, phrase_type)
         document.getElementById("latest-selection").hidden = false;
         document.getElementById("word-list-contents").hidden = true;
         document.getElementById("word-list-hidden-warning").hidden = false;
+        document.getElementById("undo-button").hidden = false;
     }
     else
     {
@@ -455,6 +456,7 @@ function reset_game()
     document.getElementById("undo-button").disabled = true;
     document.getElementById("word-list-contents").hidden = false;
     document.getElementById("word-list-hidden-warning").hidden = true;
+    document.getElementById("undo-button").hidden = true;
 
     build_all_choices();
 
