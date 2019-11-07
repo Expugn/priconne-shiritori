@@ -141,17 +141,19 @@ img.latest-selection-character-circle {
 }
 
 div.latest-selection-character {
-    margin-top: -30px;
     margin-left: 93px;
     font-weight: bolder;
     font-size: 35px;
     position: relative;
-    bottom: 56px;
+    bottom: 87px;
     right: 2px;
 }
 #latest-selection-text {
+    font-weight: bolder;
+    font-size: 24px;
     position: relative;
-    bottom: 70px;
+    bottom: 76px;
+    padding-bottom: 20px;
 }
 #latest-selection {
     padding-top: 20px;
