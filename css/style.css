@@ -141,6 +141,7 @@ img.latest-selection-character-circle {
 }
 
 div.latest-selection-character {
+    display: inline-block;
     margin-left: 93px;
     font-weight: bolder;
     font-size: 35px;
@@ -152,12 +153,14 @@ div.latest-selection-character {
     font-weight: bolder;
     font-size: 24px;
     position: relative;
-    bottom: 76px;
-    padding-bottom: 20px;
+    bottom: 60px;
+    margin-top: -10px;
+    padding-bottom: 10px;
 }
 #latest-selection {
     padding-top: 20px;
     margin-bottom: -60px;
+    height: 320px;
 }
 #undo-button {
     position: relative;
