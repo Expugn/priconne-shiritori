@@ -135,9 +135,9 @@ div.word-list-text {
 img.latest-selection-character-circle {
     display: inline-block;
     margin-left: 90px;
-    margin-top: -50px;
     position: relative;
-    bottom: 22px;
+    bottom: 74px;
+    left: 1px;
 }
 
 div.latest-selection-character {
@@ -146,25 +146,22 @@ div.latest-selection-character {
     font-weight: bolder;
     font-size: 35px;
     position: relative;
-    bottom: 87px;
-    right: 2px;
+    bottom: 139px;
 }
 #latest-selection-text {
     font-weight: bolder;
     font-size: 24px;
     position: relative;
-    bottom: 60px;
-    margin-top: -10px;
-    padding-bottom: 10px;
+    bottom: 150px;
 }
 #latest-selection {
     padding-top: 20px;
     margin-bottom: -60px;
-    height: 320px;
+    height: 310px;
 }
 #undo-button {
     position: relative;
-    bottom: 85px;
+    bottom: 160px;
 }
 /* CSS FOR LATEST SELECTION END */
 
