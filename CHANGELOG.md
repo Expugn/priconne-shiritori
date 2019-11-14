@@ -3,6 +3,12 @@ All notable changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.0.4] - 2019-11-13
+### Added
+- Added link to GitHub repository in footer
+### Changed
+- Toggling "Find Resulting Words?" after performing a search and resetting it no longer shows you results from your previous search
+
 ## [0.0.3] - 2019-11-06
 ### Added
 - Added an undo button in case the player makes a mistake

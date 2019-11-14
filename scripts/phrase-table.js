@@ -151,6 +151,7 @@ function reset_word_search()
     document.getElementById("word-search-table").hidden = false;
     document.getElementById("reset-word-search-button").hidden = true;
     _phrase_table_js.table_visible = false;
+    _phrase_table_js.word_searched = '';
 }
 
 function build_phrase_list()
