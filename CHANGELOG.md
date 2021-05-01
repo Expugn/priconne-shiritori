@@ -3,6 +3,15 @@ All notable changes to this project will be documented in this file.
 
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.0.5] - 2021-04-30
+### Added
+- Shiritori Game Version 2
+  - Added 58 new panels
+  - Added 248 new words
+### Changed
+- Modified `word_list.json` to use words from the game's database rather than fan wikis
+  - Saved words may be removed as a result
+
 ## [0.0.4] - 2019-11-13
 ### Added
 - Added link to GitHub repository in footer
