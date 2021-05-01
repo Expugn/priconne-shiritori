@@ -8,9 +8,15 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Shiritori Game Version 2
   - Added 58 new panels
   - Added 248 new words
+- Due to new game logic, added phrases below the starting panels to help mobile users select the word Kaya selected
 ### Changed
 - Modified `word_list.json` to use words from the game's database rather than fan wikis
   - Saved words may be removed as a result
+### Fixed
+- New Game Logic(?)
+  - Previously, Kaya would only select the first instance of a panel's `futsuyomi`, but upon recent testing
+    it seems like she can now select any `futsuyomi` to start with?
+  - All `futsuyomi` is now selectable, but do note that some words for panels share the same end character
 
 ## [0.0.4] - 2019-11-13
 ### Added

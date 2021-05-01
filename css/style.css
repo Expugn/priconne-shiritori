@@ -79,6 +79,12 @@ div.end-character {
     left: 19px;
 }
 
+span.starting-phrase {
+    display: block;
+    color: white;
+    font-size: 12px;
+}
+
 div.futsuyomi {
     color: rgb(115, 175, 85) !important;
 }

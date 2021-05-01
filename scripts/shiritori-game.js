@@ -541,13 +541,14 @@ function build_all_choices()
             // phrase_type = futsuyomi | urayomi | priconneyomi ; determine color of character
             // BLACKLIST ANY PRICONNEYOMI WORDS SINCE THEY WILL NEVER BE SELECTED BY KAYA
             // ALSO BLACKLIST ANY URAYOMI WORDS SINCE THEY WILL NEVER BE SELECTED BY KAYA AT THE START
-            // ALSO BLACKLIST ANY FUTSUYOMI WORDS THAT AREN'T THE FIRST ONE
+            // ~~ALSO BLACKLIST ANY FUTSUYOMI WORDS THAT AREN'T THE FIRST ONE~~
+            //   4/30/2021: SEEMS THE ABOVE COMMENT ISN'T THE CASE ANYMORE!!!
             // ALSO BLACKLIST ANY FUTSUYOMI WORDS THAT END WITH ん
             if (words[i][Object.keys(words[i])[0]] !== word_list_keys.priconneyomi &&
                 words[i][Object.keys(words[i])[0]] !== word_list_keys.urayomi &&
                 word_id !== last_word_id)
             {
-                last_word_id = word_id;
+                // last_word_id = word_id;
                 if (get_last_character(Object.keys(words[i])[0]) !== "ん")
                 {
                     add_word_to_table_html(word_id, words[i]);
@@ -578,12 +579,12 @@ function build_all_choices()
         let is_word_already_collected = shiritori_game.collected_words.includes(word_id + ";" + phrase + ";" + phrase_type);
 
         // INSERT DATA
-        table_html += "<th class='word-image'>";
+        table_html += "<th class='word-image' style='width: 100px;'>";
         table_html += "<button id='" + word_id + "_" + phrase + "' class='pointer-cursor word-selection-button" + (is_word_already_collected ? " low-opacity" : "") + "' onclick='shiritori(\"" + word_id + "\", \"" + phrase + "\", \"" + phrase_type + "\")'>";
         table_html += "<img class='notranslate word-image' title='" + phrase + "' src='images/game/" + word_id + ".png' alt=''>";
         table_html += "<img class='notranslate character-circle' src='images/webpage/" + "character_circle" + ".png' alt=''>";
         table_html += "<div class='notranslate end-character webpage-text " + phrase_type + "'>" + get_last_character(phrase) + "</div>";
-        table_html += "</button></th>";
+        table_html += "</button><span class='notranslate starting-phrase'>" + phrase + "</span></th>";
 
         counter++;
     }
