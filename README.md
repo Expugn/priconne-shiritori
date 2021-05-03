@@ -15,8 +15,9 @@ Completing the word catalog (100%) grants the following title as a reward:<br>
 
 As of `April 30, 2021`, the word catalog was updated to include `248` new words.<br>
 To unlock this new word catalog, you must do the following:
-  - Read the following event story: `Inori SOS!! Time Traveling Dragons` (`イノリＳＯＳ！！　タイムトラベル・ドラゴンズ`)
+  - Read the event story: `Inori SOS!! Time Traveling Dragons` (`イノリＳＯＳ！！　タイムトラベル・ドラゴンズ`)
   - Play one game
+
 Completing this new catalog (100%) will grant the following title as a reward:<br>
 ![Word Master II](https://raw.githubusercontent.com/Expugn/priconne-shiritori/master/images/webpage/icon_emblem_11001131.png)
 
