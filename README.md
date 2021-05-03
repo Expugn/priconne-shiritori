@@ -15,8 +15,8 @@ Completing the word catalog (100%) grants the following title as a reward:<br>
 
 As of `April 30, 2021`, the word catalog was updated to include `248` new words.<br>
 To unlock this new word catalog, you must do the following:
-  - Read the event story: `Inori SOS!! Time Traveling Dragons` (`イノリＳＯＳ！！　タイムトラベル・ドラゴンズ`)
-  - Play one game
+  - Read the event story for `Inori SOS!! Time Traveling Dragons` (`イノリＳＯＳ！！　タイムトラベル・ドラゴンズ`)
+  - Play one game.
 
 Completing this new catalog (100%) will grant the following title as a reward:<br>
 ![Word Master II](https://raw.githubusercontent.com/Expugn/priconne-shiritori/master/images/webpage/icon_emblem_11001131.png)
@@ -40,11 +40,13 @@ turn on `Rush Mode` by clicking the button that only appears on **Kaya**'s turn.
 
 ## Information/Data Credits
 ### Word Data
+- ~~`AppMedia`: [Website](https://appmedia.jp/priconne-redive)~~
+- ~~`GameWith`: [Website](https://gamewith.jp/pricone-re/)~~
 - As of `April 30, 2021`, all word data is taken from the game's database.
 
 ## Other Stuff
 This is a non-profit fan project with the purpose of practice and entertainment.<br>
 All characters and assets belong to their respective owners.
 
-**Project** began on November 2, 2019.
+**Project** began on November 2, 2019.<br>
 **Game Update 2** released April 30, 2021.
