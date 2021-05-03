@@ -11,7 +11,14 @@ Although this tool can be used just to easily clear the minigame, it
 also helps you figure out the words you need to complete the word catalog.
 
 Completing the word catalog (100%) grants the following title as a reward:<br>
-![Title](https://raw.githubusercontent.com/Expugn/priconne-shiritori/master/images/webpage/icon_emblem_11001041.png)
+![Word Master](https://raw.githubusercontent.com/Expugn/priconne-shiritori/master/images/webpage/icon_emblem_11001041.png)
+
+As of `April 30, 2021`, the word catalog was updated to include `248` new words.<br>
+To unlock this new word catalog, you must do the following:
+  - Read the following event story: `Inori SOS!! Time Traveling Dragons` (`イノリＳＯＳ！！　タイムトラベル・ドラゴンズ`)
+  - Play one game
+Completing this new catalog (100%) will grant the following title as a reward:<br>
+![Word Master II](https://raw.githubusercontent.com/Expugn/priconne-shiritori/master/images/webpage/icon_emblem_11001131.png)
 
 ## How to Use
 1. Open the tool URL in a web browser (<https://expugn.github.io/priconne-shiritori/>)
@@ -32,13 +39,11 @@ turn on `Rush Mode` by clicking the button that only appears on **Kaya**'s turn.
 
 ## Information/Data Credits
 ### Word Data
-- `AppMedia`: [Website](https://appmedia.jp/priconne-redive)<br>
-- `GameWith`: [Website](https://gamewith.jp/pricone-re/)
-
-Do note that at the time of this writing, the data in these two sites are either incorrect or incomplete.
+- As of `April 30, 2021`, all word data is taken from the game's database.
 
 ## Other Stuff
 This is a non-profit fan project with the purpose of practice and entertainment.<br>
 All characters and assets belong to their respective owners.
 
 **Project** began on November 2, 2019.
+**Game Update 2** released April 30, 2021.
